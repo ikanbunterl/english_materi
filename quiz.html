@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interaktif - English Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-mini { background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .quiz-card { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .option-hover { transition: all 0.3s ease; cursor: pointer; }
+        .option-hover:hover { background: linear-gradient(135deg, #dbeafe, #93c5fd); transform: translateX(4px); }
+        .option-selected { background: linear-gradient(135deg, #3b82f6, #1d4ed8); color: white; }
+        .option-correct { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .option-wrong { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .progress-bar { transition: width 0.5s ease; }
+        .timer-pulse { animation: pulse 1s infinite; }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .celebration { animation: bounce 0.6s ease-in-out; }
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translate3d(0,0,0); }
+            40%, 43% { transform: translate3d(0,-30px,0); }
+            70% { transform: translate3d(0,-15px,0); }
+            90% { transform: translate3d(0,-4px,0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-graduation-cap text-2xl text-indigo-600 mr-3"></i>
+                        <span class="text-xl font-bold text-gray-800">English Learning Hub</span>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Beranda</a>
+                    <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Grammar</a>
+                    <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Pronouns</a>
+                    <a href="quiz.html" class="text-orange-600 font-medium">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-mini py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-white">
+                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Quiz Interaktif</h1>
+                <p class="text-xl text-orange-100">Tantang pengetahuanmu dengan tebak-tebakan seru!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Selection -->
+    <section id="quiz-selection" class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Pilih Tantanganmu</h2>
+                <p class="text-lg text-gray-600">Pilih topik yang ingin kamu uji kemampuannya</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Descriptive Text Quiz -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-pen-fancy text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Descriptive Text</h3>
+                    <p class="text-gray-600 mb-6">5 soal tentang struktur dan ciri bahasa descriptive text</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Waktu: 2 menit</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-question-circle mr-2"></i>
+                            <span>5 Soal</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-trophy mr-2"></i>
+                            <span>Skor: 100 poin</span>
+                        </div>
+                    </div>
+                    <button onclick="startQuiz('descriptive')" class="w-full bg-blue-500 text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                        Mulai Quiz
+                    </button>
+                </div>
+
+                <!-- Grammar Quiz -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-cogs text-3xl text-green-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Grammar & Tenses</h3>
+                    <p class="text-gray-600 mb-6">5 soal tentang tenses dan imperative sentences</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Waktu: 2 menit</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-question-circle mr-2"></i>
+                            <span>5 Soal</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-trophy mr-2"></i>
+                            <span>Skor: 100 poin</span>
+                        </div>
+                    </div>
+                    <button onclick="startQuiz('grammar')" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                        Mulai Quiz
+                    </button>
+                </div>
+
+                <!-- Pronouns Quiz -->
+                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-3xl text-purple-600"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pronouns</h3>
+                    <p class="text-gray-600 mb-6">5 soal tentang jenis-jenis kata ganti</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-clock mr-2"></i>
+                            <span>Waktu: 2 menit</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-question-circle mr-2"></i>
+                            <span>5 Soal</span>
+                        </div>
+                        <div class="flex items-center justify-center text-sm text-gray-600">
+                            <i class="fas fa-trophy mr-2"></i>
+                            <span>Skor: 100 poin</span>
+                        </div>
+                    </div>
+                    <button onclick="startQuiz('pronouns')" class="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
+                        Mulai Quiz
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Interface -->
+    <section id="quiz-interface" class="py-16 hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Quiz Header -->
+            <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
+                <div class="flex justify-between items-center mb-4">
+                    <div>
+                        <h3 id="quiz-title" class="text-2xl font-bold text-gray-800">Quiz Descriptive Text</h3>
+                        <p id="quiz-subtitle" class="text-gray-600">Pertanyaan 1 dari 5</p>
+                    </div>
+                    <div class="text-right">
+                        <div id="timer" class="text-2xl font-bold text-orange-600 timer-pulse">30</div>
+                        <p class="text-sm text-gray-600">detik</p>
+                    </div>
+                </div>
+                
+                <!-- Progress Bar -->
+                <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
+                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full" style="width: 20%"></div>
+                </div>
+                
+                <!-- Score -->
+                <div class="flex justify-between text-sm text-gray-600">
+                    <span>Skor: <span id="current-score">0</span></span>
+                    <span><span id="current-question">1</span>/5</span>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="quiz-card rounded-2xl p-8 shadow-lg mb-8">
+                <div id="question-text" class="text-xl font-semibold text-gray-800 mb-6">
+                    <!-- Question will be inserted here -->
+                </div>
+                
+                <div id="options-container" class="space-y-4">
+                    <!-- Options will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex justify-between">
+                <button id="prev-btn" onclick="previousQuestion()" class="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                    <i class="fas fa-arrow-left mr-2"></i>Sebelumnya
+                </button>
+                <button id="next-btn" onclick="nextQuestion()" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                    Selanjutnya<i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="py-16 hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="bg-white rounded-2xl p-8 shadow-lg">
+                <div id="result-icon" class="w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center">
+                    <!-- Icon will be inserted here -->
+                </div>
+                
+                <h2 id="result-title" class="text-3xl font-bold text-gray-800 mb-4">Selamat!</h2>
+                <p id="result-message" class="text-lg text-gray-600 mb-8">
+                    <!-- Message will be inserted here -->
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-blue-50 p-6 rounded-xl">
+                        <div id="final-score" class="text-3xl font-bold text-blue-600 mb-2">85</div>
+                        <p class="text-gray-600">Skor Akhir</p>
+                    </div>
+                    <div class="bg-green-50 p-6 rounded-xl">
+                        <div id="correct-answers" class="text-3xl font-bold text-green-600 mb-2">4</div>
+                        <p class="text-gray-600">Jawaban Benar</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-xl">
+                        <div id="time-used" class="text-3xl font-bold text-orange-600 mb-2">1:45</div>
+                        <p class="text-gray-600">Waktu</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-4">
+                    <button onclick="restartQuiz()" class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
+                        <i class="fas fa-redo mr-2"></i>Coba Lagi
+                    </button>
+                    <button onclick="backToSelection()" class="w-full bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <i class="fas fa-graduation-cap text-3xl text-indigo-400 mr-3"></i>
+                    <span class="text-2xl font-bold">English Learning Hub</span>
+                </div>
+                <p class="text-gray-400 mb-6">Materi Bahasa Inggris untuk Kelas 10 SMA</p>
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-500">&copy; 2024 English Learning Hub. Dibuat untuk keperluan edukasi.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz Data
+        const quizData = {
+            descriptive: {
+                title: "Quiz Descriptive Text",
+                questions: [
+                    {
+                        question: "Bagian mana yang berfungsi untuk mengenalkan subjek dalam descriptive text?",
+                        options: ["Description", "Identification", "Orientation", "Complication"],
+                        correct: 1,
+                        explanation: "Identification berfungsi untuk mengenalkan subjek yang akan dideskripsikan."
+                    },
+                    {
+                        question: "Ciri bahasa apa yang paling sering digunakan dalam descriptive text?",
+                        options: ["Past tense", "Present tense", "Future tense", "Conditional"],
+                        correct: 1,
+                        explanation: "Simple present tense digunakan untuk menyatakan fakta dan ciri-ciri umum."
+                    },
+                    {
+                        question: "Kata sifat dalam descriptive text berfungsi untuk...",
+                        options: ["Menunjukkan waktu", "Menggambarkan ciri-ciri", "Menunjukkan tempat", "Menyatakan perintah"],
+                        correct: 1,
+                        explanation: "Kata sifat (adjectives) digunakan untuk menggambarkan ciri-ciri subjek."
+                    },
+                    {
+                        question: "Struktur descriptive text yang benar adalah...",
+                        options: ["Description → Identification", "Identification → Description", "Orientation → Complication", "Thesis → Arguments"],
+                        correct: 1,
+                        explanation: "Struktur descriptive text adalah Identification (pengenalan) kemudian Description (deskripsi)."
+                    },
+                    {
+                        question: "Kalimat berikut yang merupakan contoh identification adalah...",
+                        options: ["She has long hair", "My mother is very kind", "Borobudur is a famous temple", "The building is tall"],
+                        correct: 2,
+                        explanation: "Borobudur is a famous temple mengenalkan subjek (Borobudur) yang akan dideskripsikan."
+                    }
+                ]
+            },
+            grammar: {
+                title: "Quiz Grammar & Tenses",
+                questions: [
+                    {
+                        question: "Rumus simple present tense untuk kalimat positif adalah...",
+                        options: ["Subject + V2", "Subject + V1 (+s/es)", "Subject + was/were + V-ing", "Subject + will + V1"],
+                        correct: 1,
+                        explanation: "Simple present tense positif: Subject + V1 (+s/es untuk he/she/it)."
+                    },
+                    {
+                        question: "Kalimat 'She plays tennis every day' menggunakan tense apa?",
+                        options: ["Simple past", "Simple present", "Past continuous", "Future"],
+                        correct: 1,
+                        explanation: "Kalimat ini menggunakan simple present tense untuk kebiasaan."
+                    },
+                    {
+                        question: "Imperative sentence digunakan untuk...",
+                        options: ["Menyatakan fakta", "Memberi perintah", "Menanyakan informasi", "Menyatakan kebiasaan"],
+                        correct: 1,
+                        explanation: "Imperative sentence digunakan untuk memberi perintah, permintaan, atau nasihat."
+                    },
+                    {
+                        question: "Bentuk negative dari 'I go to school' adalah...",
+                        options: ["I not go to school", "I don't go to school", "I doesn't go to school", "I am not go to school"],
+                        correct: 1,
+                        explanation: "Bentuk negative simple present: Subject + do/does + not + V1."
+                    },
+                    {
+                        question: "Kalimat yang merupakan imperative sentence adalah...",
+                        options: ["You are beautiful", "Close the door!", "What time is it?", "I like coffee"],
+                        correct: 1,
+                        explanation: "Close the door! adalah kalimat perintah (imperative sentence)."
+                    }
+                ]
+            },
+            pronouns: {
+                title: "Quiz Pronouns",
+                questions: [
+                    {
+                        question: "Pronoun 'they' digunakan untuk...",
+                        options: ["Orang ketiga tunggal", "Orang ketiga jamak", "Orang pertama", "Orang kedua"],
+                        correct: 1,
+                        explanation: "'They' adalah pronoun untuk orang ketiga jamak (they/them)."
+                    },
+                    {
+                        question: "Pronoun yang benar untuk menggantikan 'Maria' adalah...",
+                        options: ["He", "She", "It", "They"],
+                        correct: 1,
+                        explanation: "Maria adalah perempuan, jika digunakan 'she' sebagai subject pronoun."
+                    },
+                    {
+                        question: "Dalam kalimat 'I see ___', kata yang tepat untuk mengisi titik-titik adalah...",
+                        options: ["he", "him", "his", "himself"],
+                        correct: 1,
+                        explanation: "Setelah verb 'see' digunakan object pronoun 'him'."
+                    },
+                    {
+                        question: "Reflexive pronoun untuk 'I' adalah...",
+                        options: ["me", "my", "myself", "mine"],
+                        correct: 2,
+                        explanation: "Reflexive pronoun untuk 'I' adalah 'myself'."
+                    },
+                    {
+                        question: "Pronoun yang menunjukkan kepemilikan adalah...",
+                        options: ["Subject pronoun", "Object pronoun", "Possessive pronoun", "Reflexive pronoun"],
+                        correct: 2,
+                        explanation: "Possessive pronoun menunjukkan kepemilikan (mine, yours, his, hers, etc.)."
+                    }
+                ]
+            }
+        };
+
+        let currentQuiz = null;
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedAnswers = [];
+        let timer = null;
+        let timeLeft = 30;
+        let totalTime = 0;
+
+        function startQuiz(quizType) {
+            currentQuiz = quizData[quizType];
+            currentQuestionIndex = 0;
+            score = 0;
+            selectedAnswers = [];
+            totalTime = 0;
+            
+            document.getElementById('quiz-selection').classList.add('hidden');
+            document.getElementById('quiz-interface').classList.remove('hidden');
+            document.getElementById('results').classList.add('hidden');
+            
+            document.getElementById('quiz-title').textContent = currentQuiz.title;
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = currentQuiz.questions[currentQuestionIndex];
+            
+            document.getElementById('quiz-subtitle').textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${currentQuiz.questions.length}`;
+            document.getElementById('current-question').textContent = currentQuestionIndex + 1;
+            document.getElementById('current-score').textContent = score;
+            
+            // Update progress bar
+            const progress = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('progress-bar').style.width = `${progress}%`;
+            
+            // Load question text
+            document.getElementById('question-text').textContent = question.question;
+            
+            // Load options
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option-hover bg-white p-4 rounded-lg border text-gray-700';
+                optionDiv.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-4 font-semibold">
+                            ${String.fromCharCode(65 + index)}
+                        </div>
+                        <span>${option}</span>
+                    </div>
+                `;
+                optionDiv.onclick = () => selectOption(index, optionDiv);
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            // Update navigation buttons
+            document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
+            document.getElementById('next-btn').textContent = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'Selesai' : 'Selanjutnya';
+            
+            // Start timer
+            startTimer();
+        }
+
+        function selectOption(optionIndex, optionElement) {
+            // Remove previous selections
+            document.querySelectorAll('.option-selected').forEach(el => {
+                el.classList.remove('option-selected');
+            });
+            
+            // Mark selected option
+            optionElement.classList.add('option-selected');
+            selectedAnswers[currentQuestionIndex] = optionIndex;
+        }
+
+        function nextQuestion() {
+            if (selectedAnswers[currentQuestionIndex] === undefined) {
+                alert('Silakan pilih jawaban terlebih dahulu!');
+                return;
+            }
+            
+            stopTimer();
+            
+            if (selectedAnswers[currentQuestionIndex] === currentQuiz.questions[currentQuestionIndex].correct) {
+                score += 20; // 100 points total / 5 questions
+            }
+            
+            if (currentQuestionIndex < currentQuiz.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestionIndex > 0) {
+                stopTimer();
+                currentQuestionIndex--;
+                loadQuestion();
+                
+                // Restore previous selection
+                if (selectedAnswers[currentQuestionIndex] !== undefined) {
+                    const options = document.querySelectorAll('.option-hover');
+                    options[selectedAnswers[currentQuestionIndex]].classList.add('option-selected');
+                }
+            }
+        }
+
+        function startTimer() {
+            timeLeft = 30;
+            document.getElementById('timer').textContent = timeLeft;
+            
+            timer = setInterval(() => {
+                timeLeft--;
+                totalTime++;
+                document.getElementById('timer').textContent = timeLeft;
+                
+                if (timeLeft <= 10) {
+                    document.getElementById('timer').classList.add('text-red-600');
+                } else {
+                    document.getElementById('timer').classList.remove('text-red-600');
+                }
+                
+                if (timeLeft <= 0) {
+                    nextQuestion();
+                }
+            }, 1000);
+        }
+
+        function stopTimer() {
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
+        }
+
+        function showResults() {
+            document.getElementById('quiz-interface').classList.add('hidden');
+            document.getElementById('results').classList.remove('hidden');
+            
+            const correctAnswers = Math.floor(score / 20);
+            const percentage = (score / 100) * 100;
+            
+            // Update result display
+            document.getElementById('final-score').textContent = score;
+            document.getElementById('correct-answers').textContent = correctAnswers;
+            document.getElementById('time-used').textContent = `${Math.floor(totalTime / 60)}:${(totalTime % 60).toString().padStart(2, '0')}`;
+            
+            // Determine result message and icon
+            const resultIcon = document.getElementById('result-icon');
+            const resultTitle = document.getElementById('result-title');
+            const resultMessage = document.getElementById('result-message');
+            
+            if (percentage >= 80) {
+                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-yellow-600 celebration';
+                resultIcon.innerHTML = '<i class="fas fa-trophy text-6xl text-white"></i>';
+                resultTitle.textContent = 'Luar Biasa!';
+                resultMessage.textContent = 'Kamu mendapatkan skor sempurna! Pengetahuanmu tentang materi ini sangat baik.';
+            } else if (percentage >= 60) {
+                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-green-400 to-green-600 celebration';
+                resultIcon.innerHTML = '<i class="fas fa-medal text-6xl text-white"></i>';
+                resultTitle.textContent = 'Bagus Sekali!';
+                resultMessage.textContent = 'Kamu sudah menguasai sebagian besar materi. Terus berlatih untuk hasil yang lebih baik!';
+            } else if (percentage >= 40) {
+                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 celebration';
+                resultIcon.innerHTML = '<i class="fas fa-thumbs-up text-6xl text-white"></i>';
+                resultTitle.textContent = 'Cukup Baik!';
+                resultMessage.textContent = 'Kamu sudah memahami dasar-dasar materi. Cobalah belajar lagi dan coba sekali lagi!';
+            } else {
+                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600 celebration';
+                resultIcon.innerHTML = '<i class="fas fa-heart text-6xl text-white"></i>';
+                resultTitle.textContent = 'Terus Belajar!';
+                resultMessage.textContent = 'Jangan menyerah! Setiap kesalahan adalah kesempatan untuk belajar. Cobalah lagi!';
+            }
+        }
+
+        function restartQuiz() {
+            if (currentQuiz) {
+                startQuiz(Object.keys(quizData).find(key => quizData[key] === currentQuiz));
+            }
+        }
+
+        function backToSelection() {
+            document.getElementById('results').classList.add('hidden');
+            document.getElementById('quiz-selection').classList.remove('hidden');
+        }
+
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effect to quiz cards
+            document.querySelectorAll('.card-hover').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-8px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
