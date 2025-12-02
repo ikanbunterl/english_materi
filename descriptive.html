@@ -14,6 +14,12 @@
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
         .example-box { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
         .highlight { background: linear-gradient(135deg, #fef3c7, #fbbf24); padding: 2px 6px; border-radius: 4px; }
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.3s ease; }
+        .mobile-menu.active { transform: translateY(0); }
+        .tab { transition: all 0.3s ease; }
+        .tab.active { background: linear-gradient(135deg, #3b82f6, #1e40af); color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -27,12 +33,32 @@
                         <span class="text-xl font-bold text-gray-800">English Learning Hub</span>
                     </div>
                 </div>
-                <div class="flex items-center space-x-8">
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Beranda</a>
                     <a href="descriptive.html" class="text-indigo-600 font-medium">Descriptive Text</a>
                     <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Grammar</a>
                     <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Pronouns</a>
                     <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Quiz</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200 py-4 absolute top-16 left-0 right-0 shadow-lg">
+                <div class="flex flex-col space-y-4 px-4">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Beranda</a>
+                    <a href="descriptive.html" class="text-indigo-600 font-medium px-4 py-2 rounded-lg hover:bg-indigo-100">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Grammar</a>
+                    <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Pronouns</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Quiz</a>
                 </div>
             </div>
         </div>
@@ -42,8 +68,8 @@
     <section class="hero-mini py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-white">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Descriptive Text</h1>
-                <p class="text-xl text-blue-100">Mempelajari cara menggambarkan orang, tempat, dan benda dengan bahasa yang menarik</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Descriptive Text</h1>
+                <p class="text-lg md:text-xl text-blue-100">Mempelajari cara menggambarkan orang, tempat, dan benda dengan bahasa yang menarik</p>
             </div>
         </div>
     </section>
@@ -51,260 +77,406 @@
     <!-- Main Content -->
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Generic Structure -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Generic Structure</h2>
-                    <p class="text-lg text-gray-600">Struktur umum yang digunakan dalam descriptive text</p>
-                </div>
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-8 gap-2">
+                <button onclick="showTab('structure')" class="tab active px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold text-sm md:text-base">Struktur</button>
+                <button onclick="showTab('language')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Bahasa</button>
+                <button onclick="showTab('examples')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Contoh</button>
+                <button onclick="showTab('tips')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Tips</button>
+            </div>
 
+            <!-- Structure Tab -->
+            <div id="structure" class="tab-content active">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Identification -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
-                                <span class="text-white font-bold">1</span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Identification</h3>
-                        </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Generic Structure</h3>
                         
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Bagian ini berfungsi untuk <span class="highlight font-semibold">mengenalkan subjek</span> yang akan dideskripsikan. 
-                            Biasanya berisi informasi umum tentang siapa atau apa yang akan dibahas.
-                        </p>
-                        
-                        <div class="example-box rounded-lg p-6 border">
-                            <h4 class="font-semibold text-gray-800 mb-3">Contoh:</h4>
-                            <div class="space-y-3">
+                        <div class="space-y-6">
+                            <!-- Identification -->
+                            <div class="example-box rounded-lg p-6 border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white font-bold text-sm">1</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-800">Identification</h4>
+                                </div>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Bagian ini berfungsi untuk <span class="highlight font-semibold">mengenalkan subjek</span> yang akan dideskripsikan. 
+                                    Biasanya berisi informasi umum tentang siapa atau apa yang akan dibahas.
+                                </p>
                                 <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500">
-                                    <p class="text-gray-700">
-                                        <strong>Borobudur temple</strong> is one of the most famous tourist destinations in Indonesia.
+                                    <p class="text-sm text-gray-700">
+                                        <strong>Contoh:</strong> "Borobudur is a famous temple in Indonesia. It is located in Magelang, Central Java."
                                     </p>
-                                    <p class="text-sm text-blue-600 mt-2">→ Mengenalkan tempat (Borobudur temple)</p>
                                 </div>
+                            </div>
+
+                            <!-- Description -->
+                            <div class="example-box rounded-lg p-6 border">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-white font-bold text-sm">2</span>
+                                    </div>
+                                    <h4 class="text-xl font-bold text-gray-800">Description</h4>
+                                </div>
+                                <p class="text-gray-600 mb-4 leading-relaxed">
+                                    Bagian ini berisi <span class="highlight font-semibold">deskripsi detail</span> tentang subjek yang telah diidentifikasi. 
+                                    Meliputi ciri fisik, sifat, kegunaan, dan karakteristik lainnya.
+                                </p>
                                 <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
-                                    <p class="text-gray-700">
-                                        <strong>My best friend</strong> is someone who always supports me in every situation.
+                                    <p class="text-sm text-gray-700">
+                                        <strong>Contoh:</strong> "The temple has beautiful reliefs on its walls. The architecture is very unique and amazing."
                                     </p>
-                                    <p class="text-sm text-green-600 mt-2">→ Mengenalkan orang (My best friend)</p>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Description -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center mr-4">
-                                <span class="text-white font-bold">2</span>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Lengkap</h3>
+                        
+                        <div class="bg-gray-50 p-6 rounded-lg border">
+                            <h4 class="font-bold text-gray-800 mb-4">My Best Friend</h4>
+                            
+                            <div class="mb-4">
+                                <p class="font-semibold text-blue-600 mb-2">Identification:</p>
+                                <p class="text-sm text-gray-700 leading-relaxed">
+                                    I have a best friend named Sarah. She is my classmate and we have been friends since elementary school. 
+                                    Sarah is a very special person in my life.
+                                </p>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Description</h3>
-                        </div>
-                        
-                        <p class="text-gray-600 mb-6 leading-relaxed">
-                            Bagian ini berisi <span class="highlight font-semibold">deskripsi detail</span> tentang subjek yang telah diidentifikasi. 
-                            Meliputi ciri-ciri fisik, sifat, kegiatan, dan karakteristik lainnya.
-                        </p>
-                        
-                        <div class="example-box rounded-lg p-6 border">
-                            <h4 class="font-semibold text-gray-800 mb-3">Contoh:</h4>
-                            <div class="space-y-3">
-                                <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
-                                    <p class="text-gray-700">
-                                        It has <strong>large gray body</strong>, <strong>long trunk</strong>, and <strong>big floppy ears</strong>.
-                                    </p>
-                                    <p class="text-sm text-yellow-600 mt-2">→ Deskripsi fisik</p>
-                                </div>
-                                <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
-                                    <p class="text-gray-700">
-                                        She is <strong>very kind</strong>, <strong>intelligent</strong>, and always <strong>helps others</strong>.
-                                    </p>
-                                    <p class="text-sm text-purple-600 mt-2">→ Deskripsi sifat</p>
-                                </div>
+                            
+                            <div>
+                                <p class="font-semibold text-green-600 mb-2">Description:</p>
+                                <p class="text-sm text-gray-700 leading-relaxed">
+                                    Sarah is sixteen years old. She is quite tall and slim. She has long black hair that she usually ties in a ponytail. 
+                                    Her eyes are brown and very expressive. She has a beautiful smile that can brighten anyone's day. 
+                                    Sarah is very friendly and always ready to help others. She is also very smart and hardworking. 
+                                    Her favorite subjects are Mathematics and Science. In her free time, she likes reading books and playing the piano.
+                                </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Language Features -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Language Features</h2>
-                    <p class="text-lg text-gray-600">Ciri-ciri bahasa yang digunakan dalam descriptive text</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Adjectives -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-palette text-orange-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Adjectives</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Menggunakan kata sifat untuk menggambarkan ciri-ciri
-                        </p>
-                        <div class="space-y-2">
-                            <div class="bg-orange-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700"><strong>Beautiful</strong> garden</span>
-                            </div>
-                            <div class="bg-orange-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700"><strong>Tall</strong> building</span>
-                            </div>
-                            <div class="bg-orange-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700"><strong>Clean</strong> room</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Simple Present Tense -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-clock text-blue-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Simple Present</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Menggunakan simple present tense untuk fakta umum
-                        </p>
-                        <div class="space-y-2">
-                            <div class="bg-blue-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">She <strong>has</strong> long hair</span>
-                            </div>
-                            <div class="bg-blue-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">The temple <strong>is</strong> ancient</span>
-                            </div>
-                            <div class="bg-blue-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">They <strong>live</strong> in the forest</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Linking Verbs -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-link text-green-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Linking Verbs</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata kerja penghubung seperti is, am, are
-                        </p>
-                        <div class="space-y-2">
-                            <div class="bg-green-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">She <strong>is</strong> beautiful</span>
-                            </div>
-                            <div class="bg-green-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">They <strong>are</strong> friendly</span>
-                            </div>
-                            <div class="bg-green-50 p-3 rounded-lg">
-                                <span class="text-sm text-gray-700">I <strong>am</strong> happy</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Examples -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Contoh Descriptive Text</h2>
-                    <p class="text-lg text-gray-600">Lihat contoh descriptive text untuk orang dan tempat</p>
-                </div>
-
+            <!-- Language Features Tab -->
+            <div id="language" class="tab-content">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                    <!-- Descriptive Text about Person -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-pink-500 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-user text-white"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Descriptive Text - Person</h3>
-                        </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Ciri Bahasa</h3>
                         
-                        <div class="bg-gray-50 rounded-lg p-6 mb-6">
-                            <h4 class="font-semibold text-gray-800 mb-3">My English Teacher</h4>
-                            <div class="space-y-3 text-gray-700 leading-relaxed">
-                                <p>
-                                    <span class="bg-blue-100 px-2 py-1 rounded text-sm font-medium">Identification:</span><br>
-                                    <strong>My English teacher, Mrs. Smith</strong>, is one of the most inspiring people I have ever met.
+                        <div class="space-y-6">
+                            <div class="example-box rounded-lg p-6 border">
+                                <h4 class="font-bold text-gray-800 mb-3">
+                                    <i class="fas fa-clock text-blue-500 mr-2"></i>Simple Present Tense
+                                </h4>
+                                <p class="text-gray-600 mb-3 text-sm">
+                                    Digunakan untuk menggambarkan karakteristik yang umum dan tetap.
                                 </p>
-                                <p>
-                                    <span class="bg-green-100 px-2 py-1 rounded text-sm font-medium">Description:</span><br>
-                                    She is a <strong>middle-aged woman</strong> with <strong>long brown hair</strong> and <strong>bright blue eyes</strong>. 
-                                    She always wears <strong>elegant clothes</strong> and a <strong>warm smile</strong> on her face. 
-                                    Mrs. Smith is very <strong>patient and understanding</strong>. She explains difficult concepts 
-                                    in a <strong>simple and clear way</strong>. Her classes are always <strong>interesting and interactive</strong>, 
-                                    making students <strong>enthusiastic about learning English</strong>.
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700">
+                                        <strong>Contoh:</strong> "She <span class="highlight">has</span> long black hair."<br>
+                                        "The building <span class="highlight">is</span> very tall."
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="example-box rounded-lg p-6 border">
+                                <h4 class="font-bold text-gray-800 mb-3">
+                                    <i class="fas fa-palette text-purple-500 mr-2"></i>Adjectives (Kata Sifat)
+                                </h4>
+                                <p class="text-gray-600 mb-3 text-sm">
+                                    Digunakan untuk memberikan deskripsi yang lebih detail tentang objek.
                                 </p>
+                                <div class="bg-purple-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700">
+                                        <strong>Contoh:</strong> beautiful, tall, friendly, smart, colorful, delicious
+                                    </p>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-blue-50 p-3 rounded-lg text-center">
-                                <div class="text-2xl font-bold text-blue-600">8</div>
-                                <div class="text-sm text-gray-600">Adjectives</div>
-                            </div>
-                            <div class="bg-green-50 p-3 rounded-lg text-center">
-                                <div class="text-2xl font-bold text-green-600">Present</div>
-                                <div class="text-sm text-gray-600">Tense</div>
+
+                            <div class="example-box rounded-lg p-6 border">
+                                <h4 class="font-bold text-gray-800 mb-3">
+                                    <i class="fas fa-running text-green-500 mr-2"></i>Action Verbs
+                                </h4>
+                                <p class="text-gray-600 mb-3 text-sm">
+                                    Kata kerja yang menunjukkan aktivitas atau perbuatan.
+                                </p>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700">
+                                        <strong>Contoh:</strong> run, walk, sing, dance, read, write, play
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Descriptive Text about Place -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="flex items-center mb-6">
-                            <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mr-4">
-                                <i class="fas fa-map-marker-alt text-white"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Descriptive Text - Place</h3>
-                        </div>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Figurative Language</h3>
                         
-                        <div class="bg-gray-50 rounded-lg p-6 mb-6">
-                            <h4 class="font-semibold text-gray-800 mb-3">Bali Island</h4>
-                            <div class="space-y-3 text-gray-700 leading-relaxed">
-                                <p>
-                                    <span class="bg-blue-100 px-2 py-1 rounded text-sm font-medium">Identification:</span><br>
-                                    <strong>Bali</strong> is a <strong>beautiful island</strong> located in Indonesia that is famous for its <strong>stunning beaches</strong> and <strong>rich culture</strong>.
-                                </p>
-                                <p>
-                                    <span class="bg-green-100 px-2 py-1 rounded text-sm font-medium">Description:</span><br>
-                                    The island has <strong>pristine white sand beaches</strong> with <strong>crystal clear water</strong>. 
-                                    There are many <strong>ancient temples</strong> with <strong>intricate stone carvings</strong>. 
-                                    The local people are <strong>very friendly and welcoming</strong>. 
-                                    Bali offers <strong>delicious traditional food</strong> and <strong>vibrant traditional dances</strong>. 
-                                    The weather is <strong>warm and sunny</strong> throughout the year, making it a <strong>perfect destination</strong> for tourists.
-                                </p>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Simile (Perbandingan langsung)</h4>
+                                <p class="text-sm text-gray-700 mb-2">Menggunakan kata 'like' atau 'as' untuk membandingkan</p>
+                                <p class="text-sm text-gray-600 italic">"Her smile <span class="highlight">is like</span> sunshine"</p>
                             </div>
-                        </div>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-teal-50 p-3 rounded-lg text-center">
-                                <div class="text-2xl font-bold text-teal-600">10</div>
-                                <div class="text-sm text-gray-600">Adjectives</div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Metaphor (Metafora)</h4>
+                                <p class="text-sm text-gray-700 mb-2">Perbandingan tanpa kata 'like' atau 'as'</p>
+                                <p class="text-sm text-gray-600 italic">"Time <span class="highlight">is</span> money"</p>
                             </div>
-                            <div class="bg-orange-50 p-3 rounded-lg text-center">
-                                <div class="text-2xl font-bold text-orange-600">Present</div>
-                                <div class="text-sm text-gray-600">Tense</div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Personification (Personifikasi)</h4>
+                                <p class="text-sm text-gray-700 mb-2">Memberikan sifat manusia pada benda mati</p>
+                                <p class="text-sm text-gray-600 italic">"The wind <span class="highlight">whispers</span> through the trees"</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Hyperbole (Hiperbola)</h4>
+                                <p class="text-sm text-gray-700 mb-2">Perbandingan yang berlebihan untuk efek dramatis</p>
+                                <p class="text-sm text-gray-600 italic">"I've told you a <span class="highlight">million times</span>"</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Practice Exercise -->
-            <div class="text-center">
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-100 rounded-2xl p-8 border border-purple-200">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Siap untuk berlatih?</h3>
-                    <p class="text-gray-600 mb-6">Test pemahamanmu tentang descriptive text dengan quiz interaktif</p>
-                    <button onclick="window.location.href='quiz.html'" class="bg-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
-                        Mulai Quiz Descriptive Text
-                    </button>
+            <!-- Examples Tab -->
+            <div id="examples" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Contoh Descriptive Text</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="example-box rounded-lg p-6 border">
+                                <h4 class="font-bold text-gray-800 mb-4">Borobudur Temple</h4>
+                                <div class="text-sm text-gray-700 leading-relaxed space-y-3">
+                                    <p>
+                                        <strong class="text-blue-600">Identification:</strong><br>
+                                        Borobudur is a famous Buddhist temple in Indonesia. It is located in Magelang, Central Java. 
+                                        This temple was built in the 9th century during the Sailendra dynasty.
+                                    </p>
+                                    <p>
+                                        <strong class="text-green-600">Description:</strong><br>
+                                        The temple is very large and magnificent. It has nine platforms with a central dome at the top. 
+                                        The walls are decorated with beautiful reliefs that tell stories about Buddha's life. 
+                                        There are 504 Buddha statues inside the temple. The architecture is very unique and shows the greatness of ancient Javanese civilization. 
+                                        From the top of the temple, visitors can see the beautiful panorama of the surrounding mountains and villages.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="example-box rounded-lg p-6 border">
+                                <h4 class="font-bold text-gray-800 mb-4">My Favorite Teacher</h4>
+                                <div class="text-sm text-gray-700 leading-relaxed space-y-3">
+                                    <p>
+                                        <strong class="text-blue-600">Identification:</strong><br>
+                                        I would like to describe my favorite teacher, Mr. Smith. He is my English teacher who has taught me for two years. 
+                                        He is one of the most influential people in my life.
+                                    </p>
+                                    <p>
+                                        <strong class="text-green-600">Description:</strong><br>
+                                        Mr. Smith is a middle-aged man with a friendly face. He is quite tall and has a medium build. 
+                                        His hair is starting to turn gray, but it makes him look wise and experienced. 
+                                        He always wears glasses and has a warm smile that makes students feel comfortable. 
+                                        His teaching method is very interesting. He always uses creative ways to explain difficult concepts. 
+                                        He is very patient and never gets angry when students ask many questions. 
+                                        He is not only a good teacher but also a good friend who always gives good advice.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Latihan Identifikasi</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-3">Soal 1:</h4>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    Baca teks berikut dan identifikasi bagian identification dan descriptionnya:
+                                </p>
+                                <div class="bg-white p-3 rounded border text-xs text-gray-600 leading-relaxed">
+                                    My bedroom is my favorite place in the house. It is where I spend most of my time. 
+                                    My room is not very big, but it is very comfortable. The walls are painted light blue, 
+                                    my favorite color. There is a single bed near the window with blue and white sheets. 
+                                    Next to the bed is a small wooden table with a lamp and some books. 
+                                    On the opposite wall, there is a wardrobe and a bookshelf filled with my favorite novels. 
+                                    The room has a large window that lets in plenty of sunlight during the day.
+                                </div>
+                                <button onclick="showAnswer(1)" class="mt-3 px-4 py-2 bg-blue-500 text-white rounded text-sm hover:bg-blue-600 transition-colors">
+                                    Lihat Jawaban
+                                </button>
+                                <div id="answer-1" class="hidden mt-3 p-3 bg-green-50 rounded border text-xs text-gray-700">
+                                    <p><strong>Identification:</strong> "My bedroom is my favorite place in the house. It is where I spend most of my time."</p>
+                                    <p><strong>Description:</strong> "My room is not very big... until the end of paragraph."</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-3">Soal 2:</h4>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    Sebutkan 5 adjectives yang ada dalam teks di atas!
+                                </p>
+                                <button onclick="showAnswer(2)" class="mt-3 px-4 py-2 bg-purple-500 text-white rounded text-sm hover:bg-purple-600 transition-colors">
+                                    Lihat Jawaban
+                                </button>
+                                <div id="answer-2" class="hidden mt-3 p-3 bg-green-50 rounded border text-xs text-gray-700">
+                                    <p>1. favorite, 2. big, 3. comfortable, 4. light (blue), 5. small, 6. wooden, 7. large</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-orange-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-3">Soal 3:</h4>
+                                <p class="text-sm text-gray-700 mb-3">
+                                    Buatlah descriptive text pendek tentang orang yang kamu kagumi!
+                                </p>
+                                <textarea class="w-full p-3 border rounded text-xs" rows="6" placeholder="Tulis descriptive textmu di sini..."></textarea>
+                                <button onclick="showWritingTips()" class="mt-3 px-4 py-2 bg-orange-500 text-white rounded text-sm hover:bg-orange-600 transition-colors">
+                                    Lihat Tips Menulis
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tips Tab -->
+            <div id="tips" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Tips Menulis Descriptive Text</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-white font-bold text-sm">1</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Pilih Topik yang Spesifik</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        Pilihlah satu objek yang ingin dideskripsikan dan fokus pada detail-detailnya. 
+                                        Hindari terlalu banyak objek dalam satu teks.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-white font-bold text-sm">2</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Gunakan Indera Lima</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        Libatkan pembaca dengan menggambarkan apa yang bisa dilihat, didengar, 
+                                        dirasa, dicium, dan dirasakan.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-white font-bold text-sm">3</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Gunakan Kata Sifat yang Variatif</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        Hindari penggunaan kata sifat yang sama berulang-ulang. 
+                                        Gunakan sinonim untuk membuat teks lebih menarik.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-white font-bold text-sm">4</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Gunakan Figurative Language</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        Tambahkan simile, metaphor, atau personifikasi untuk membuat 
+                                        deskripsi lebih hidup dan menarik.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <span class="text-white font-bold text-sm">5</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 mb-2">Organisir dengan Baik</h4>
+                                    <p class="text-gray-600 text-sm">
+                                        Susun deskripsi secara logis, misalnya dari yang umum ke khusus, 
+                                        atau mengikuti urutan spasial (dari atas ke bawah, dll).
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Kamus Kata Sifat</h3>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Untuk Orang</h4>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div>• friendly (ramah)</div>
+                                    <div>• cheerful (ceria)</div>
+                                    <div>• helpful (penolong)</div>
+                                    <div>• generous (dermawan)</div>
+                                    <div>• intelligent (cerdas)</div>
+                                    <div>• hardworking (rajun)</div>
+                                    <div>• patient (sabar)</div>
+                                    <div>• humorous (humoris)</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Untuk Tempat</h4>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div>• spacious (luas)</div>
+                                    <div>• cozy (nyaman)</div>
+                                    <div>• modern (modern)</div>
+                                    <div>• ancient (kuno)</div>
+                                    <div>• beautiful (indah)</div>
+                                    <div>• peaceful (tenang)</div>
+                                    <div>• crowded (ramai)</div>
+                                    <div>• clean (bersih)</div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <h4 class="font-semibold text-gray-800 mb-2">Untuk Benda</h4>
+                                <div class="grid grid-cols-2 gap-2 text-xs">
+                                    <div>• colorful (berwarna-warni)</div>
+                                    <div>• shiny (mengkilap)</div>
+                                    <div>• rough (kasar)</div>
+                                    <div>• smooth (halus)</div>
+                                    <div>• heavy (berat)</div>
+                                    <div>• light (ringan)</div>
+                                    <div>• expensive (mahal)</div>
+                                    <div>• cheap (murah)</div>
+                                </div>
+                            </div>
+
+                            <div class="bg-yellow-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Kata Transisi</h4>
+                                <div class="text-xs text-gray-700">
+                                    <p>• First of all (Pertama-tama)</p>
+                                    <p>• In addition (Selain itu)</p>
+                                    <p>• Moreover (Terlebih lagi)</p>
+                                    <p>• Furthermore (Selanjutnya)</p>
+                                    <p>• In conclusion (Kesimpulannya)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -314,47 +486,100 @@
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-6">
                     <i class="fas fa-graduation-cap text-3xl text-indigo-400 mr-3"></i>
                     <span class="text-2xl font-bold">English Learning Hub</span>
                 </div>
-                <p class="text-gray-400 mb-6">Materi Bahasa Inggris untuk Kelas 10 SMA</p>
+                <p class="text-gray-300 mb-6">
+                    Platform pembelajaran Bahasa Inggris untuk siswa SMA kelas 10
+                </p>
                 <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-500">&copy; 2024 English Learning Hub. Dibuat untuk keperluan edukasi.</p>
+                    <p class="text-gray-400 text-sm">
+                        © 2024 English Learning Hub. Dibuat dengan ❤️ untuk pendidikan.
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Add smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
         });
 
-        // Add animation on scroll
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Tab functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-gray-200');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            event.target.classList.remove('bg-gray-200');
+        }
+
+        // Show answer function
+        function showAnswer(questionNumber) {
+            const answer = document.getElementById(`answer-${questionNumber}`);
+            answer.classList.toggle('hidden');
+        }
+
+        // Show writing tips
+        function showWritingTips() {
+            alert('Tips Menulis Descriptive Text:\n\n1. Mulai dengan pengenalan umum\n2. Gunakan kata sifat yang variatif\n3. Libatkan indera lima\n4. Gunakan figurative language\n5. Organisir dengan baik\n\nGood luck!');
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Animate cards on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
         // Observe all cards
         document.querySelectorAll('.card-hover').forEach(card => {
-            card.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
         });
     </script>

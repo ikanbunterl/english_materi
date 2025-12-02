@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reported Speech - English Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .hero-mini { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .example-box { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .highlight { background: linear-gradient(135deg, #fef3c7, #fbbf24); padding: 2px 6px; border-radius: 4px; }
+        .rule-box { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .conversion-table { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); }
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.3s ease; }
+        .mobile-menu.active { transform: translateY(0); }
+        .tab { transition: all 0.3s ease; }
+        .tab.active { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-graduation-cap text-2xl text-indigo-600 mr-3"></i>
+                        <span class="text-xl font-bold text-gray-800">English Learning Hub</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Beranda</a>
+                    <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Grammar</a>
+                    <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Pronouns</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Quiz</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200 py-4 absolute top-16 left-0 right-0 shadow-lg">
+                <div class="flex flex-col space-y-4 px-4">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Beranda</a>
+                    <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Grammar</a>
+                    <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Pronouns</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Quiz</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-mini py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="text-white">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Reported Speech</h1>
+                <p class="text-lg md:text-xl text-purple-100">Belajar cara melaporkan ucapan orang lain dengan benar</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Introduction -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa itu Reported Speech?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Reported Speech (kalimat tidak langsung) adalah cara untuk melaporkan ucapan, perintah, atau pertanyaan orang lain 
+                    tanpa mengutip kata-katanya secara langsung.
+                </p>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-8 gap-2">
+                <button onclick="showTab('statements')" class="tab active px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold text-sm md:text-base">Statements</button>
+                <button onclick="showTab('questions')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Questions</button>
+                <button onclick="showTab('commands')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Commands</button>
+                <button onclick="showTab('changes')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Changes</button>
+            </div>
+
+            <!-- Statements Tab -->
+            <div id="statements" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Direct vs Indirect Statements</h3>
+                        
+                        <div class="example-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Direct Speech (Kutipan Langsung)</h4>
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Contoh:</strong> She said, "I am tired."
+                                </p>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Menggunakan tanda kutip (")</li>
+                                <li>• Kata-kata asli dari pembicara</li>
+                                <li>• Tense tetap sama</li>
+                            </ul>
+                        </div>
+
+                        <div class="rule-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Indirect Speech (Kutipan Tidak Langsung)</h4>
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-500 mb-4">
+                                <p class="text-sm text-gray-700">
+                                    <strong>Contoh:</strong> She said that she was tired.
+                                </p>
+                            </div>
+                            <ul class="text-sm text-gray-600 space-y-2">
+                                <li>• Tanpa tanda kutip</li>
+                                <li>• Kata-kata dilaporkan</li>
+                                <li>• Tense berubah</li>
+                                <li>• Menggunakan kata penghubung "that"</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Konversi</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Present Simple → Past Simple</p>
+                                <p class="text-sm text-gray-700 mb-2">Direct: "I <span class="highlight">like</span> coffee."</p>
+                                <p class="text-sm text-gray-700">Indirect: She said (that) she <span class="highlight">liked</span> coffee.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Present Continuous → Past Continuous</p>
+                                <p class="text-sm text-gray-700 mb-2">Direct: "I <span class="highlight">am studying</span> English."</p>
+                                <p class="text-sm text-gray-700">Indirect: He said (that) he <span class="highlight">was studying</span> English.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Past Simple → Past Perfect</p>
+                                <p class="text-sm text-gray-700 mb-2">Direct: "I <span class="highlight">went</span> to school."</p>
+                                <p class="text-sm text-gray-700">Indirect: She said (that) she <span class="highlight">had gone</span> to school.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Will → Would</p>
+                                <p class="text-sm text-gray-700 mb-2">Direct: "I <span class="highlight">will help</span> you."</p>
+                                <p class="text-sm text-gray-700">Indirect: He said (that) he <span class="highlight">would help</span> me.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Questions Tab -->
+            <div id="questions" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Reported Questions</h3>
+                        
+                        <div class="rule-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Aturan Umum:</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• <span class="highlight">Hilangkan tanda tanya (?) dan tanda kutip (")</span></li>
+                                <li>• <span class="highlight">Ubah urutan kata menjadi kalimat berita</span></li>
+                                <li>• <span class="highlight">Tambahkan kata tanya jika ada</span></li>
+                                <li>• <span class="highlight">Ubah pronoun dan tense sesuai</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Contoh Yes/No Questions:</h4>
+                            <div class="space-y-3">
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700 mb-1"><strong>Direct:</strong> "Are you tired?"</p>
+                                    <p class="text-sm text-gray-700"><strong>Indirect:</strong> She asked if/whether I was tired.</p>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700 mb-1"><strong>Direct:</strong> "Do you like coffee?"</p>
+                                    <p class="text-sm text-gray-700"><strong>Indirect:</strong> He asked if/whether I liked coffee.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Wh- Questions</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">What → asked what</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">What</span> are you doing?"</p>
+                                <p class="text-sm text-gray-700">Indirect: She asked <span class="highlight">what</span> I was doing.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Where → asked where</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">Where</span> do you live?"</p>
+                                <p class="text-sm text-gray-700">Indirect: He asked <span class="highlight">where</span> I lived.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">When → asked when</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">When</span> will you arrive?"</p>
+                                <p class="text-sm text-gray-700">Indirect: She asked <span class="highlight">when</span> I would arrive.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Why → asked why</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">Why</span> are you late?"</p>
+                                <p class="text-sm text-gray-700">Indirect: He asked <span class="highlight">why</span> I was late.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">How → asked how</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">How</span> do you know?"</p>
+                                <p class="text-sm text-gray-700">Indirect: She asked <span class="highlight">how</span> I knew.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commands Tab -->
+            <div id="commands" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Reported Commands</h3>
+                        
+                        <div class="rule-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Struktur Umum:</h4>
+                            <div class="bg-white p-4 rounded-lg border mb-4">
+                                <p class="font-mono text-base md:text-lg text-center">
+                                    Subject + told/asked/ordered + object + to + V1
+                                </p>
+                            </div>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• <span class="highlight">Positive command:</span> told/asked + to + V1</li>
+                                <li>• <span class="highlight">Negative command:</span> told/asked + not + to + V1</li>
+                                <li>• <span class="highlight">Pronoun berubah sesuai konteks</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Contoh Positive Commands:</h4>
+                            <div class="space-y-3">
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700 mb-1"><strong>Direct:</strong> "Sit down, please."</p>
+                                    <p class="text-sm text-gray-700"><strong>Indirect:</strong> She asked me to sit down.</p>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700 mb-1"><strong>Direct:</strong> "Open the window."</p>
+                                    <p class="text-sm text-gray-700"><strong>Indirect:</strong> He told me to open the window.</p>
+                                </div>
+                                <div class="bg-purple-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700 mb-1"><strong>Direct:</strong> "Be quiet!"</p>
+                                    <p class="text-sm text-gray-700"><strong>Indirect:</strong> The teacher ordered us to be quiet.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Negative Commands</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Don't → asked/told not to</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">Don't</span> be late."</p>
+                                <p class="text-sm text-gray-700">Indirect: She asked me <span class="highlight">not to</span> be late.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Don't → told not to</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">Don't</span> touch that!"</p>
+                                <p class="text-sm text-gray-700">Indirect: He told me <span class="highlight">not to</span> touch that.</p>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Never → asked never to</p>
+                                <p class="text-sm text-gray-700 mb-1">Direct: "<span class="highlight">Never</span> give up."</p>
+                                <p class="text-sm text-gray-700">Indirect: She asked me <span class="highlight">never to</span> give up.</p>
+                            </div>
+                            
+                            <div class="conversion-table rounded-lg p-6 border mt-6">
+                                <h4 class="font-semibold text-gray-800 mb-4">Daftar Kata Kerja Reporting:</h4>
+                                <div class="grid grid-cols-2 gap-4 text-sm">
+                                    <div>
+                                        <p class="font-semibold text-gray-700">Untuk Perintah:</p>
+                                        <ul class="text-gray-600 space-y-1 mt-2">
+                                            <li>• tell</li>
+                                            <li>• order</li>
+                                            <li>• command</li>
+                                            <li>• instruct</li>
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700">Untuk Permintaan:</p>
+                                        <ul class="text-gray-600 space-y-1 mt-2">
+                                            <li>• ask</li>
+                                            <li>• request</li>
+                                            <li>• beg</li>
+                                            <li>• urge</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Changes Tab -->
+            <div id="changes" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Perubahan Pronoun</h3>
+                        
+                        <div class="conversion-table rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Pronoun Changes:</h4>
+                            <div class="space-y-3">
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700"><strong>I → he/she</strong></p>
+                                    <p class="text-xs text-gray-600">Direct: "I am happy." → Indirect: She said she was happy.</p>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700"><strong>You → I/he/she/they</strong></p>
+                                    <p class="text-xs text-gray-600">Direct: "You are right." → Indirect: He said I was right.</p>
+                                </div>
+                                <div class="bg-purple-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700"><strong>My → his/her</strong></p>
+                                    <p class="text-xs text-gray-600">Direct: "This is my book." → Indirect: She said it was her book.</p>
+                                </div>
+                                <div class="bg-orange-50 p-3 rounded border">
+                                    <p class="text-sm text-gray-700"><strong>Your → my/his/her/their</strong></p>
+                                    <p class="text-xs text-gray-600">Direct: "I like your car." → Indirect: He said he liked my car.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Perubahan Keterangan Waktu & Tempat</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Keterangan Waktu:</p>
+                                <div class="space-y-1 text-xs">
+                                    <p>• now → then</p>
+                                    <p>• today → that day</p>
+                                    <p>• tomorrow → the next day</p>
+                                    <p>• yesterday → the day before</p>
+                                    <p>• this week → that week</p>
+                                    <p>• last month → the month before</p>
+                                    <p>• next year → the following year</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Keterangan Tempat:</p>
+                                <div class="space-y-1 text-xs">
+                                    <p>• here → there</p>
+                                    <p>• this → that</p>
+                                    <p>• these → those</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <p class="font-semibold text-gray-800 mb-2 text-sm">Contoh:</p>
+                                <p class="text-sm text-gray-700 mb-2">Direct: "I will meet you <span class="highlight">here tomorrow</span>."</p>
+                                <p class="text-sm text-gray-700">Indirect: He said he would meet me <span class="highlight">there the next day</span>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="flex items-center justify-center mb-6">
+                    <i class="fas fa-graduation-cap text-3xl text-indigo-400 mr-3"></i>
+                    <span class="text-2xl font-bold">English Learning Hub</span>
+                </div>
+                <p class="text-gray-300 mb-6">
+                    Platform pembelajaran Bahasa Inggris untuk siswa SMA kelas 10
+                </p>
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-400 text-sm">
+                        © 2024 English Learning Hub. Dibuat dengan ❤️ untuk pendidikan.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Tab functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-gray-200');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            event.target.classList.remove('bg-gray-200');
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

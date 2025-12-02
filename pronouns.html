@@ -9,12 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        .hero-mini { background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%); }
+        .hero-mini { background: linear-gradient(135deg, #ec4899 0%, #db2777 100%); }
         .card-hover { transition: all 0.3s ease; }
         .card-hover:hover { transform: translateY(-4px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-        .pronoun-card { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
+        .example-box { background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); }
         .highlight { background: linear-gradient(135deg, #fef3c7, #fbbf24); padding: 2px 6px; border-radius: 4px; }
-        .person-icon { width: 60px; height: 60px; }
+        .formula-box { background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); }
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.3s ease; }
+        .mobile-menu.active { transform: translateY(0); }
+        .tab { transition: all 0.3s ease; }
+        .tab.active { background: linear-gradient(135deg, #ec4899, #db2777); color: white; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -28,12 +34,32 @@
                         <span class="text-xl font-bold text-gray-800">English Learning Hub</span>
                     </div>
                 </div>
-                <div class="flex items-center space-x-8">
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Beranda</a>
                     <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Descriptive Text</a>
                     <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Grammar</a>
-                    <a href="pronouns.html" class="text-purple-600 font-medium">Pronouns</a>
+                    <a href="pronouns.html" class="text-pink-600 font-medium">Pronouns</a>
                     <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Quiz</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200 py-4 absolute top-16 left-0 right-0 shadow-lg">
+                <div class="flex flex-col space-y-4 px-4">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Beranda</a>
+                    <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Grammar</a>
+                    <a href="pronouns.html" class="text-pink-600 font-medium px-4 py-2 rounded-lg hover:bg-pink-100">Pronouns</a>
+                    <a href="quiz.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Quiz</a>
                 </div>
             </div>
         </div>
@@ -43,8 +69,8 @@
     <section class="hero-mini py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-white">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Pronouns (Kata Ganti)</h1>
-                <p class="text-xl text-purple-100">Mengenal berbagai jenis kata ganti dalam Bahasa Inggris</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Pronouns</h1>
+                <p class="text-lg md:text-xl text-pink-100">Mempelajari berbagai jenis kata ganti dan penggunaannya dalam kalimat</p>
             </div>
         </div>
     </section>
@@ -53,142 +79,127 @@
     <section class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Introduction -->
-            <div class="text-center mb-16">
-                <div class="bg-white rounded-2xl p-8 shadow-lg max-w-4xl mx-auto">
-                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Apa itu Pronoun?</h2>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        <span class="highlight font-semibold">Pronoun atau kata ganti</span> adalah kata yang digunakan untuk 
-                        <span class="highlight font-semibold">menggantikan nama orang, benda, atau tempat</span> agar tidak 
-                        mengulang kata yang sama berkali-kali dalam kalimat.
-                    </p>
-                </div>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Apa itu Pronouns?</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Pronouns (kata ganti) adalah kata yang digunakan untuk menggantikan kata benda (nouns) 
+                    agar tidak terlalu berulang dalam kalimat.
+                </p>
             </div>
 
-            <!-- Personal Pronouns -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Personal Pronouns</h2>
-                    <p class="text-lg text-gray-600">Kata ganti untuk orang</p>
-                </div>
+            <!-- Tab Navigation -->
+            <div class="flex flex-wrap justify-center mb-8 gap-2">
+                <button onclick="showTab('personal')" class="tab active px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold text-sm md:text-base">Personal</button>
+                <button onclick="showTab('possessive')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Possessive</button>
+                <button onclick="showTab('reflexive')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Reflexive</button>
+                <button onclick="showTab('relative')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Relative</button>
+                <button onclick="showTab('interrogative')" class="tab px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold bg-gray-200 text-sm md:text-base">Interrogative</button>
+            </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    <!-- First Person -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-center mb-6">
-                            <div class="person-icon bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-user text-blue-600 text-2xl"></i>
+            <!-- Personal Pronouns Tab -->
+            <div id="personal" class="tab-content active">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Personal Pronouns</h3>
+                        
+                        <div class="formula-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Tabel Personal Pronouns</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-3 text-left">Subject</th>
+                                            <th class="p-3 text-left">Object</th>
+                                            <th class="p-3 text-left">Contoh</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-3 font-semibold">I</td>
+                                            <td class="p-3">me</td>
+                                            <td class="p-3 text-xs">I love you. / You love me.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">You</td>
+                                            <td class="p-3">you</td>
+                                            <td class="p-3 text-xs">You help her. / She helps you.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">He</td>
+                                            <td class="p-3">him</td>
+                                            <td class="p-3 text-xs">He calls them. / They call him.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">She</td>
+                                            <td class="p-3">her</td>
+                                            <td class="p-3 text-xs">She likes it. / It likes her.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">It</td>
+                                            <td class="p-3">it</td>
+                                            <td class="p-3 text-xs">It eats food. / Food eats it.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">We</td>
+                                            <td class="p-3">us</td>
+                                            <td class="p-3 text-xs">We see them. / They see us.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">They</td>
+                                            <td class="p-3">them</td>
+                                            <td class="p-3 text-xs">They know us. / We know them.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">First Person</h3>
-                            <p class="text-gray-600">Orang pertama (saya/kita)</p>
                         </div>
 
-                        <div class="pronoun-card rounded-lg p-6">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">I</div>
-                                    <p class="text-sm text-gray-600 mt-1">I am a student</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">Me</div>
-                                    <p class="text-sm text-gray-600 mt-1">She helps me</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">We</div>
-                                    <p class="text-sm text-gray-600 mt-1">We are friends</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">Us</div>
-                                    <p class="text-sm text-gray-600 mt-1">They see us</p>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="bg-purple-500 text-white px-4 py-2 rounded-lg font-semibold">My/Mine</div>
-                                <p class="text-sm text-gray-600 mt-1">This is my book</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Second Person -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-center mb-6">
-                            <div class="person-icon bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-user-friends text-green-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Second Person</h3>
-                            <p class="text-gray-600">Orang kedua (kamu/anda)</p>
-                        </div>
-
-                        <div class="pronoun-card rounded-lg p-6">
-                            <div class="grid grid-cols-2 gap-4 mb-4">
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">You</div>
-                                    <p class="text-sm text-gray-600 mt-1">You are kind</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-4 py-2 rounded-lg font-semibold">You</div>
-                                    <p class="text-sm text-gray-600 mt-1">I help you</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">You</div>
-                                    <p class="text-sm text-gray-600 mt-1">You are students</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">You</div>
-                                    <p class="text-sm text-gray-600 mt-1">We meet you</p>
-                                </div>
-                            </div>
-                            <div class="text-center">
-                                <div class="bg-purple-500 text-white px-4 py-2 rounded-lg font-semibold">Your/Yours</div>
-                                <p class="text-sm text-gray-600 mt-1">That is your car</p>
-                            </div>
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-3">Perbedaan Subject dan Object</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• <span class="highlight">Subject pronouns</span> sebagai subjek kalimat</li>
+                                <li>• <span class="highlight">Object pronouns</span> sebagai objek kalimat</li>
+                                <li>• Menghindari pengulangan kata benda</li>
+                                <li>• Membuat kalimat lebih efisien</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Third Person -->
-                    <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                        <div class="text-center mb-6">
-                            <div class="person-icon bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <i class="fas fa-users text-purple-600 text-2xl"></i>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Penggunaan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Subject Pronouns</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• <span class="highlight">I</span> am a student.</p>
+                                    <p>• <span class="highlight">He</span> is my brother.</p>
+                                    <p>• <span class="highlight">She</span> likes reading.</p>
+                                    <p>• <span class="highlight">It</span> is raining.</p>
+                                    <p>• <span class="highlight">We</span> are friends.</p>
+                                    <p>• <span class="highlight">They</span> play football.</p>
+                                </div>
                             </div>
-                            <h3 class="text-2xl font-bold text-gray-800">Third Person</h3>
-                            <p class="text-gray-600">Orang ketiga (dia/mereka)</p>
-                        </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Object Pronouns</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• She loves <span class="highlight">me</span>.</p>
+                                    <p>• I see <span class="highlight">him</span> every day.</p>
+                                    <p>• We help <span class="highlight">her</span> with homework.</p>
+                                    <p>• The cat chases <span class="highlight">it</span>.</p>
+                                    <p>• They invite <span class="highlight">us</span> to the party.</p>
+                                    <p>• I call <span class="highlight">them</span> later.</p>
+                                </div>
+                            </div>
 
-                        <div class="pronoun-card rounded-lg p-6">
-                            <div class="grid grid-cols-3 gap-2 mb-4">
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">He</div>
-                                    <p class="text-xs text-gray-600 mt-1">He is tall</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-pink-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">She</div>
-                                    <p class="text-xs text-gray-600 mt-1">She is pretty</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-gray-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">It</div>
-                                    <p class="text-xs text-gray-600 mt-1">It is big</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-blue-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">Him</div>
-                                    <p class="text-xs text-gray-600 mt-1">I see him</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-pink-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">Her</div>
-                                    <p class="text-xs text-gray-600 mt-1">We help her</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-gray-500 text-white px-2 py-2 rounded-lg font-semibold text-sm">It</div>
-                                    <p class="text-xs text-gray-600 mt-1">They want it</p>
-                                </div>
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">They</div>
-                                    <p class="text-sm text-gray-600 mt-1">They are happy</p>
-                                </div>
-                                <div class="text-center">
-                                    <div class="bg-green-500 text-white px-4 py-2 rounded-lg font-semibold">Them</div>
-                                    <p class="text-sm text-gray-600 mt-1">We call them</p>
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Pengganti Nama</h4>
+                                <div class="text-sm text-gray-700">
+                                    <p class="mb-2"><strong>Tanpa pronouns:</strong></p>
+                                    <p class="italic">"John met Mary. John gave Mary a book. Mary thanked John."</p>
+                                    <p class="mb-2 mt-3"><strong>Dengan pronouns:</strong></p>
+                                    <p class="italic">"John met Mary. <span class="highlight">He</span> gave <span class="highlight">her</span> a book. <span class="highlight">She</span> thanked <span class="highlight">him</span>."</p>
                                 </div>
                             </div>
                         </div>
@@ -196,254 +207,318 @@
                 </div>
             </div>
 
-            <!-- Types of Pronouns -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Jenis-jenis Pronoun</h2>
-                    <p class="text-lg text-gray-600">Macam-macam kata ganti dan penggunaannya</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    <!-- Subject Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-user-check text-blue-600 text-2xl"></i>
+            <!-- Possessive Pronouns Tab -->
+            <div id="possessive" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Possessive Pronouns</h3>
+                        
+                        <div class="formula-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Tabel Possessive Pronouns</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-3 text-left">Personal</th>
+                                            <th class="p-3 text-left">Possessive Adjectives</th>
+                                            <th class="p-3 text-left">Possessive Pronouns</th>
+                                            <th class="p-3 text-left">Contoh</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-3 font-semibold">I</td>
+                                            <td class="p-3">my</td>
+                                            <td class="p-3">mine</td>
+                                            <td class="p-3 text-xs">This is my book. / This book is mine.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">You</td>
+                                            <td class="p-3">your</td>
+                                            <td class="p-3">yours</td>
+                                            <td class="p-3 text-xs">That is your car. / That car is yours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">He</td>
+                                            <td class="p-3">his</td>
+                                            <td class="p-3">his</td>
+                                            <td class="p-3 text-xs">This is his pen. / This pen is his.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">She</td>
+                                            <td class="p-3">her</td>
+                                            <td class="p-3">hers</td>
+                                            <td class="p-3 text-xs">That is her bag. / That bag is hers.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">It</td>
+                                            <td class="p-3">its</td>
+                                            <td class="p-3">-</td>
+                                            <td class="p-3 text-xs">The dog wagged its tail.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">We</td>
+                                            <td class="p-3">our</td>
+                                            <td class="p-3">ours</td>
+                                            <td class="p-3 text-xs">This is our house. / This house is ours.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">They</td>
+                                            <td class="p-3">their</td>
+                                            <td class="p-3">theirs</td>
+                                            <td class="p-3 text-xs">That is their garden. / That garden is theirs.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-800">Subject Pronouns</h3>
                         </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang digunakan sebagai <span class="highlight font-semibold">subjek kalimat</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-blue-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-3 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">I</span>
-                                    <span class="text-blue-600">You</span>
-                                    <span class="text-blue-600">He</span>
-                                    <span class="text-pink-600">She</span>
-                                    <span class="text-gray-600">It</span>
-                                    <span class="text-green-600">We</span>
-                                    <span class="text-green-600">You</span>
-                                    <span class="text-green-600">They</span>
-                                </div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> <span class="highlight">She</span> is beautiful</p>
-                            </div>
+
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-3">Perbedaan Penting</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• <span class="highlight">Possessive adjectives</span> diikuti kata benda</li>
+                                <li>• <span class="highlight">Possessive pronouns</span> berdiri sendiri</li>
+                                <li>• Menunjukkan kepemilikan atau hubungan</li>
+                                <li>• 'Its' tidak memiliki bentuk possessive pronoun</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <!-- Object Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-user-times text-green-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Object Pronouns</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang digunakan sebagai <span class="highlight font-semibold">objek kalimat</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-green-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-3 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">Me</span>
-                                    <span class="text-blue-600">You</span>
-                                    <span class="text-blue-600">Him</span>
-                                    <span class="text-pink-600">Her</span>
-                                    <span class="text-gray-600">It</span>
-                                    <span class="text-green-600">Us</span>
-                                    <span class="text-green-600">You</span>
-                                    <span class="text-green-600">Them</span>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Penggunaan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Possessive Adjectives</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• This is <span class="highlight">my</span> book.</p>
+                                    <p>• That is <span class="highlight">your</span> car.</p>
+                                    <p>• <span class="highlight">His</span> name is John.</p>
+                                    <p>• <span class="highlight">Her</span> hair is long.</p>
+                                    <p>• <span class="highlight">Its</span> color is red.</p>
+                                    <p>• This is <span class="highlight">our</span> house.</p>
+                                    <p>• That is <span class="highlight">their</span> dog.</p>
                                 </div>
                             </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> I love <span class="highlight">her</span></p>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Possessive Pronouns</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• This book is <span class="highlight">mine</span>.</p>
+                                    <p>• That car is <span class="highlight">yours</span>.</p>
+                                    <p>• The pen is <span class="highlight">his</span>.</p>
+                                    <p>• The bag is <span class="highlight">hers</span>.</p>
+                                    <p>• This house is <span class="highlight">ours</span>.</p>
+                                    <p>• That dog is <span class="highlight">theirs</span>.</p>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <!-- Reflexive Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-user-circle text-purple-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Reflexive Pronouns</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang digunakan untuk <span class="highlight font-semibold">menunjukkan tindakan kembali ke subjek</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-purple-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-3 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">Myself</span>
-                                    <span class="text-blue-600">Yourself</span>
-                                    <span class="text-blue-600">Himself</span>
-                                    <span class="text-pink-600">Herself</span>
-                                    <span class="text-gray-600">Itself</span>
-                                    <span class="text-green-600">Ourselves</span>
-                                    <span class="text-green-600">Yourselves</span>
-                                    <span class="text-green-600">Themselves</span>
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Perbandingan</h4>
+                                <div class="text-sm text-gray-700 space-y-2">
+                                    <p><strong>Dengan possessive adjectives:</strong></p>
+                                    <p>• My car is red. / Your bike is blue.</p>
+                                    <p class="mt-2"><strong>Dengan possessive pronouns:</strong></p>
+                                    <p>• The red car is mine. / The blue bike is yours.</p>
                                 </div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> She hurt <span class="highlight">herself</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Possessive Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-key text-orange-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Possessive Pronouns</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang menunjukkan <span class="highlight font-semibold">kepemilikan</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-orange-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-2 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">Mine</span>
-                                    <span class="text-blue-600">Yours</span>
-                                    <span class="text-blue-600">His</span>
-                                    <span class="text-pink-600">Hers</span>
-                                    <span class="text-gray-600">Its</span>
-                                    <span class="text-green-600">Ours</span>
-                                    <span class="text-green-600">Yours</span>
-                                    <span class="text-green-600">Theirs</span>
-                                </div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> This book is <span class="highlight">mine</span></p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Demonstrative Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-hand-pointer text-red-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Demonstrative Pronouns</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang digunakan untuk <span class="highlight font-semibold">menunjukkan benda</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-red-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-2 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">This</span>
-                                    <span class="text-blue-600">That</span>
-                                    <span class="text-green-600">These</span>
-                                    <span class="text-green-600">Those</span>
-                                </div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> <span class="highlight">This</span> is my pen</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Interrogative Pronouns -->
-                    <div class="card-hover bg-white rounded-xl p-6 shadow-lg">
-                        <div class="text-center mb-4">
-                            <div class="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                                <i class="fas fa-question-circle text-indigo-600 text-2xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-800">Interrogative Pronouns</h3>
-                        </div>
-                        <p class="text-gray-600 text-center mb-4">
-                            Kata ganti yang digunakan untuk <span class="highlight font-semibold">membuat pertanyaan</span>
-                        </p>
-                        <div class="space-y-3">
-                            <div class="bg-indigo-50 p-3 rounded-lg text-center">
-                                <div class="grid grid-cols-2 gap-2 text-sm font-semibold">
-                                    <span class="text-blue-600">Who</span>
-                                    <span class="text-blue-600">Whom</span>
-                                    <span class="text-blue-600">Whose</span>
-                                    <span class="text-blue-600">Which</span>
-                                    <span class="text-blue-600">What</span>
-                                </div>
-                            </div>
-                            <div class="bg-white p-3 rounded-lg border">
-                                <p class="text-sm text-gray-700"><strong>Contoh:</strong> <span class="highlight">Who</span> is she?</p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Adjective Order -->
-            <div class="mb-16">
-                <div class="text-center mb-12">
-                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Word of Adjective Series</h2>
-                    <p class="text-lg text-gray-600">Urutan kata sifat dalam bahasa Inggris</p>
-                </div>
+            <!-- Reflexive Pronouns Tab -->
+            <div id="reflexive" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Reflexive Pronouns</h3>
+                        
+                        <div class="formula-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Tabel Reflexive Pronouns</h4>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="p-3 text-left">Personal</th>
+                                            <th class="p-3 text-left">Reflexive</th>
+                                            <th class="p-3 text-left">Contoh</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200">
+                                        <tr>
+                                            <td class="p-3 font-semibold">I</td>
+                                            <td class="p-3">myself</td>
+                                            <td class="p-3 text-xs">I hurt myself.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">You</td>
+                                            <td class="p-3">yourself</td>
+                                            <td class="p-3 text-xs">You cut yourself.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">He</td>
+                                            <td class="p-3">himself</td>
+                                            <td class="p-3 text-xs">He blames himself.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">She</td>
+                                            <td class="p-3">herself</td>
+                                            <td class="p-3 text-xs">She made herself a cake.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">It</td>
+                                            <td class="p-3">itself</td>
+                                            <td class="p-3 text-xs">The cat cleans itself.</td>
+                                        </tr>
+                                        <tr class="bg-gray-50">
+                                            <td class="p-3 font-semibold">We</td>
+                                            <td class="p-3">ourselves</td>
+                                            <td class="p-3 text-xs">We enjoyed ourselves.</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="p-3 font-semibold">They</td>
+                                            <td class="p-3">themselves</td>
+                                            <td class="p-3 text-xs">They helped themselves.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
 
-                <div class="card-hover bg-white rounded-2xl p-8 shadow-lg">
-                    <div class="text-center mb-8">
-                        <h3 class="text-xl font-bold text-gray-800 mb-4">Urutan yang Benar:</h3>
-                        <div class="flex flex-wrap justify-center gap-2">
-                            <span class="bg-red-100 px-3 py-2 rounded-lg text-sm font-semibold">Opinion</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-orange-100 px-3 py-2 rounded-lg text-sm font-semibold">Size</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-yellow-100 px-3 py-2 rounded-lg text-sm font-semibold">Age</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-green-100 px-3 py-2 rounded-lg text-sm font-semibold">Shape</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-blue-100 px-3 py-2 rounded-lg text-sm font-semibold">Color</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-indigo-100 px-3 py-2 rounded-lg text-sm font-semibold">Origin</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-purple-100 px-3 py-2 rounded-lg text-sm font-semibold">Material</span>
-                            <span class="text-gray-400">→</span>
-                            <span class="bg-pink-100 px-3 py-2 rounded-lg text-sm font-semibold">Purpose</span>
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-3">Fungsi Reflexive Pronouns</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• Menunjukkan subjek dan objek adalah orang yang sama</li>
+                                <li>• Digunakan untuk penekanan (emphasis)</li>
+                                <li>• Menyatakan kegiatan yang dilakukan sendiri</li>
+                                <li>• Dibentuk dengan menambahkan -self/-selves</li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <div>
-                            <h4 class="font-semibold text-gray-800 mb-4">Penjelasan:</h4>
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Penggunaan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Subjek dan Objek Sama</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• I saw <span class="highlight">myself</span> in the mirror.</p>
+                                    <p>• He cut <span class="highlight">himself</span> with a knife.</p>
+                                    <p>• She made <span class="highlight">herself</span> a sandwich.</p>
+                                    <p>• We enjoyed <span class="highlight">ourselves</span> at the party.</p>
+                                    <p>• They helped <span class="highlight">themselves</span> to food.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Untuk Penekanan</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• I <span class="highlight">myself</span> will do it.</p>
+                                    <p>• He <span class="highlight">himself</span> said that.</p>
+                                    <p>• The president <span class="highlight">himself</span> visited.</p>
+                                    <p>• We <span class="highlight">ourselves</span> made this cake.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Dengan 'By'</h4>
+                                <div class="text-sm text-gray-700">
+                                    <p>• I did it <span class="highlight">by myself</span>. (saya sendiri)</p>
+                                    <p>• He lives <span class="highlight">by himself</span>. (sendirian)</p>
+                                    <p>• She solved the problem <span class="highlight">by herself</span>.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Relative Pronouns Tab -->
+            <div id="relative" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Relative Pronouns</h3>
+                        
+                        <div class="formula-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Tabel Relative Pronouns</h4>
                             <div class="space-y-3">
-                                <div class="bg-red-50 p-3 rounded-lg border-l-4 border-red-500">
-                                    <p class="text-sm"><strong>Opinion:</strong> beautiful, ugly, nice, amazing</p>
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Who</p>
+                                    <p class="text-sm text-gray-600">Untuk orang (subject)</p>
+                                    <p class="text-xs text-gray-500">The man who lives next door is friendly.</p>
                                 </div>
-                                <div class="bg-orange-50 p-3 rounded-lg border-l-4 border-orange-500">
-                                    <p class="text-sm"><strong>Size:</strong> big, small, tall, short</p>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Whom</p>
+                                    <p class="text-sm text-gray-600">Untuk orang (object) - formal</p>
+                                    <p class="text-xs text-gray-500">The woman whom you met is my aunt.</p>
                                 </div>
-                                <div class="bg-yellow-50 p-3 rounded-lg border-l-4 border-yellow-500">
-                                    <p class="text-sm"><strong>Age:</strong> old, young, new, ancient</p>
+                                <div class="bg-purple-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Which</p>
+                                    <p class="text-sm text-gray-600">Untuk benda atau hewan</p>
+                                    <p class="text-xs text-gray-500">The book which is on the table is mine.</p>
                                 </div>
-                                <div class="bg-green-50 p-3 rounded-lg border-l-4 border-green-500">
-                                    <p class="text-sm"><strong>Shape:</strong> round, square, triangular</p>
+                                <div class="bg-orange-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">That</p>
+                                    <p class="text-sm text-gray-600">Untuk orang atau benda</p>
+                                    <p class="text-xs text-gray-500">The car that I bought is red.</p>
                                 </div>
-                                <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-500">
-                                    <p class="text-sm"><strong>Color:</strong> red, blue, green, yellow</p>
+                                <div class="bg-red-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Whose</p>
+                                    <p class="text-sm text-gray-600">Menunjukkan kepemilikan</p>
+                                    <p class="text-xs text-gray-500">The boy whose bike was stolen is crying.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div>
-                            <h4 class="font-semibold text-gray-800 mb-4">Contoh:</h4>
-                            <div class="space-y-4">
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-gray-700 mb-2"><strong>Benar:</strong></p>
-                                    <p class="text-lg font-semibold text-green-600">A beautiful small old round red Indonesian wooden dining table</p>
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-3">Fungsi Relative Pronouns</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• Menghubungkan dua kalimat menjadi satu</li>
+                                <li>• Merujuk pada kata benda sebelumnya (antecedent)</li>
+                                <li>• Membuat teks lebih efisien dan mengalir</li>
+                                <li>• Dapat diganti dengan 'that' dalam banyak kasus</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Penggunaan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Who (Subject)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• The teacher <span class="highlight">who</span> teaches English is nice.</p>
+                                    <p>• The man <span class="highlight">who</span> lives next door is friendly.</p>
+                                    <p>• Students <span class="highlight">who</span> study hard will succeed.</p>
                                 </div>
-                                <div class="bg-gray-50 p-4 rounded-lg">
-                                    <p class="text-gray-700 mb-2"><strong>Salah:</strong></p>
-                                    <p class="text-lg font-semibold text-red-600">A red beautiful Indonesian old small round wooden dining table</p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Whom (Object)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• The person <span class="highlight">whom</span> I called is my boss.</p>
+                                    <p>• The girl <span class="highlight">whom</span> you met is my sister.</p>
+                                    <p>• The man <span class="highlight">whom</span> we helped was grateful.</p>
                                 </div>
-                                <div class="bg-blue-50 p-4 rounded-lg">
-                                    <p class="text-sm text-blue-800"><strong>Latihan:</strong></p>
-                                    <p class="text-sm text-gray-700">Coba buat kalimat dengan 3-4 kata sifat!</p>
+                            </div>
+
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Which (Benda/Hewan)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• The book <span class="highlight">which</span> is on the table is mine.</p>
+                                    <p>• The car <span class="highlight">which</span> he bought is expensive.</p>
+                                    <p>• The dog <span class="highlight">which</span> barks loudly is scary.</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-orange-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">That (Alternatif)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• The man <span class="highlight">that</span> lives here is rich.</p>
+                                    <p>• The book <span class="highlight">that</span> I read was interesting.</p>
+                                    <p>• The movie <span class="highlight">that</span> we watched was boring.</p>
                                 </div>
                             </div>
                         </div>
@@ -451,14 +526,151 @@
                 </div>
             </div>
 
-            <!-- Practice Section -->
-            <div class="text-center">
-                <div class="bg-gradient-to-br from-purple-50 to-indigo-100 rounded-2xl p-8 border border-purple-200">
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Siap menguji pengetahuan pronounmu?</h3>
-                    <p class="text-gray-600 mb-6">Latihan soal pronouns untuk memperkuat pemahaman</p>
-                    <button onclick="window.location.href='quiz.html'" class="bg-purple-500 text-white px-8 py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
-                        Mulai Quiz Pronouns
-                    </button>
+            <!-- Interrogative Pronouns Tab -->
+            <div id="interrogative" class="tab-content">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Interrogative Pronouns</h3>
+                        
+                        <div class="formula-box rounded-lg p-6 mb-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-4">Daftar Interrogative Pronouns</h4>
+                            <div class="space-y-3">
+                                <div class="bg-blue-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">What</p>
+                                    <p class="text-sm text-gray-600">Untuk benda atau informasi</p>
+                                    <p class="text-xs text-gray-500">What is your name?</p>
+                                </div>
+                                <div class="bg-green-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Who</p>
+                                    <p class="text-sm text-gray-600">Untuk orang (subject)</p>
+                                    <p class="text-xs text-gray-500">Who is coming to the party?</p>
+                                </div>
+                                <div class="bg-purple-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Whom</p>
+                                    <p class="text-sm text-gray-600">Untuk orang (object) - formal</p>
+                                    <p class="text-xs text-gray-500">Whom did you meet?</p>
+                                </div>
+                                <div class="bg-orange-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Which</p>
+                                    <p class="text-sm text-gray-600">Untuk pilihan terbatas</p>
+                                    <p class="text-xs text-gray-500">Which book do you prefer?</p>
+                                </div>
+                                <div class="bg-red-50 p-3 rounded border">
+                                    <p class="font-semibold text-gray-800">Whose</p>
+                                    <p class="text-sm text-gray-600">Menanyakan kepemilikan</p>
+                                    <p class="text-xs text-gray-500">Whose bag is this?</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="example-box rounded-lg p-6 border">
+                            <h4 class="font-semibold text-gray-800 mb-3">Fungsi Interrogative Pronouns</h4>
+                            <ul class="space-y-2 text-sm text-gray-700">
+                                <li>• Digunakan untuk membuat pertanyaan</li>
+                                <li>• Menanyakan informasi tentang orang, benda, atau kepemilikan</li>
+                                <li>• Selalu diikuti oleh verb</li>
+                                <li>• Berbeda dengan interrogative adjectives</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                        <h3 class="text-xl font-bold text-gray-800 mb-6">Contoh Penggunaan</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">What (Benda/Informasi)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• <span class="highlight">What</span> is your favorite color?</p>
+                                    <p>• <span class="highlight">What</span> time is it?</p>
+                                    <p>• <span class="highlight">What</span> do you want to eat?</p>
+                                    <p>• <span class="highlight">What</span> happened yesterday?</p>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Who (Orang - Subject)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• <span class="highlight">Who</span> is knocking at the door?</p>
+                                    <p>• <span class="highlight">Who</span> wants to go first?</p>
+                                    <p>• <span class="highlight">Who</span> called you last night?</p>
+                                    <p>• <span class="highlight">Who</span> is your best friend?</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-purple-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Which (Pilihan)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• <span class="highlight">Which</span> do you prefer, tea or coffee?</p>
+                                    <p>• <span class="highlight">Which</span> is your car?</p>
+                                    <p>• <span class="highlight">Which</span> way should we go?</p>
+                                    <p>• <span class="highlight">Which</span> book are you reading?</p>
+                                </div>
+                            </div>
+
+                            <div class="bg-orange-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold text-gray-800 mb-2">Whose (Kepemilikan)</h4>
+                                <div class="space-y-2 text-sm text-gray-700">
+                                    <p>• <span class="highlight">Whose</span> is this jacket?</p>
+                                    <p>• <span class="highlight">Whose</span> book are you reading?</p>
+                                    <p>• <span class="highlight">Whose</span> turn is it?</p>
+                                    <p>• <span class="highlight">Whose</span> phone is ringing?</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Table -->
+            <div class="mt-16">
+                <div class="card-hover bg-white rounded-2xl p-6 md:p-8 shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Ringkasan Pronouns</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="bg-gray-100">
+                                    <th class="p-3 text-left font-semibold text-gray-800">Jenis</th>
+                                    <th class="p-3 text-left font-semibold text-gray-800">Fungsi</th>
+                                    <th class="p-3 text-left font-semibold text-gray-800">Contoh</th>
+                                    <th class="p-3 text-left font-semibold text-gray-800">Keterangan</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                <tr>
+                                    <td class="p-3 font-semibold text-blue-600">Personal</td>
+                                    <td class="p-3">Menggantikan orang</td>
+                                    <td class="p-3">I, you, he, she, it, we, they</td>
+                                    <td class="p-3">Subject & object forms</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="p-3 font-semibold text-green-600">Possessive</td>
+                                    <td class="p-3">Menunjukkan kepemilikan</td>
+                                    <td class="p-3">my, mine, your, yours</td>
+                                    <td class="p-3">Adjectives & pronouns</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-purple-600">Reflexive</td>
+                                    <td class="p-3">Subjek = objek</td>
+                                    <td class="p-3">myself, yourself, himself</td>
+                                    <td class="p-3">-self/-selves</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="p-3 font-semibold text-orange-600">Relative</td>
+                                    <td class="p-3">Menghubungkan kalimat</td>
+                                    <td class="p-3">who, which, that, whose</td>
+                                    <td class="p-3">Relative clauses</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-red-600">Interrogative</td>
+                                    <td class="p-3">Membuat pertanyaan</td>
+                                    <td class="p-3">what, who, which, whose</td>
+                                    <td class="p-3">Wh- questions</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -468,50 +680,90 @@
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-6">
                     <i class="fas fa-graduation-cap text-3xl text-indigo-400 mr-3"></i>
                     <span class="text-2xl font-bold">English Learning Hub</span>
                 </div>
-                <p class="text-gray-400 mb-6">Materi Bahasa Inggris untuk Kelas 10 SMA</p>
+                <p class="text-gray-300 mb-6">
+                    Platform pembelajaran Bahasa Inggris untuk siswa SMA kelas 10
+                </p>
                 <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-500">&copy; 2024 English Learning Hub. Dibuat untuk keperluan edukasi.</p>
+                    <p class="text-gray-400 text-sm">
+                        © 2024 English Learning Hub. Dibuat dengan ❤️ untuk pendidikan.
+                    </p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // Add animation on scroll
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Tab functionality
+        function showTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all tabs
+            document.querySelectorAll('.tab').forEach(tab => {
+                tab.classList.remove('active');
+                tab.classList.add('bg-gray-200');
+            });
+            
+            // Show selected tab content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+            event.target.classList.remove('bg-gray-200');
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Animate cards on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver(function(entries) {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('opacity-100', 'translate-y-0');
-                    entry.target.classList.remove('opacity-0', 'translate-y-4');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
                 }
             });
         }, observerOptions);
 
         // Observe all cards
         document.querySelectorAll('.card-hover').forEach(card => {
-            card.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
             observer.observe(card);
-        });
-
-        // Add hover effect for pronoun examples
-        document.querySelectorAll('.pronoun-card .bg-blue-500, .pronoun-card .bg-green-500, .pronoun-card .bg-purple-500, .pronoun-card .bg-pink-500, .pronoun-card .bg-gray-500').forEach(element => {
-            element.addEventListener('mouseenter', function() {
-                this.style.transform = 'scale(1.1)';
-                this.style.transition = 'transform 0.2s ease';
-            });
-            
-            element.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
-            });
         });
     </script>
 </body>

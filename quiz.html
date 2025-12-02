@@ -31,6 +31,12 @@
             70% { transform: translate3d(0,-15px,0); }
             90% { transform: translate3d(0,-4px,0); }
         }
+        .mobile-menu { transform: translateY(-100%); transition: transform 0.3s ease; }
+        .mobile-menu.active { transform: translateY(0); }
+        .achievement-badge { background: linear-gradient(135deg, #fbbf24, #f59e0b); }
+        .score-circle { 
+            background: conic-gradient(from 0deg, #10b981 0deg, #10b981 var(--percentage), #e5e7eb var(--percentage), #e5e7eb 360deg);
+        }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -44,12 +50,32 @@
                         <span class="text-xl font-bold text-gray-800">English Learning Hub</span>
                     </div>
                 </div>
-                <div class="flex items-center space-x-8">
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
                     <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Beranda</a>
                     <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Descriptive Text</a>
                     <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Grammar</a>
                     <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors">Pronouns</a>
                     <a href="quiz.html" class="text-orange-600 font-medium">Quiz</a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-indigo-600 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Navigation Menu -->
+            <div id="mobile-menu" class="mobile-menu md:hidden bg-white border-t border-gray-200 py-4 absolute top-16 left-0 right-0 shadow-lg">
+                <div class="flex flex-col space-y-4 px-4">
+                    <a href="index.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Beranda</a>
+                    <a href="descriptive.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Descriptive Text</a>
+                    <a href="grammar.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Grammar</a>
+                    <a href="pronouns.html" class="text-gray-700 hover:text-indigo-600 font-medium transition-colors px-4 py-2 rounded-lg hover:bg-gray-100">Pronouns</a>
+                    <a href="quiz.html" class="text-orange-600 font-medium px-4 py-2 rounded-lg hover:bg-orange-100">Quiz</a>
                 </div>
             </div>
         </div>
@@ -59,8 +85,8 @@
     <section class="hero-mini py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="text-white">
-                <h1 class="text-4xl lg:text-5xl font-bold mb-4">Quiz Interaktif</h1>
-                <p class="text-xl text-orange-100">Tantang pengetahuanmu dengan tebak-tebakan seru!</p>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Quiz Interaktif</h1>
+                <p class="text-lg md:text-xl text-orange-100">Tantang pengetahuanmu dengan quiz yang seru dan edukatif!</p>
             </div>
         </div>
     </section>
@@ -73,22 +99,22 @@
                 <p class="text-lg text-gray-600">Pilih topik yang ingin kamu uji kemampuannya</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Descriptive Text Quiz -->
                 <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
                     <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <i class="fas fa-pen-fancy text-3xl text-blue-600"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Descriptive Text</h3>
-                    <p class="text-gray-600 mb-6">5 soal tentang struktur dan ciri bahasa descriptive text</p>
+                    <p class="text-gray-600 mb-6">10 soal tentang struktur dan ciri bahasa descriptive text</p>
                     <div class="space-y-2 mb-6">
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-clock mr-2"></i>
-                            <span>Waktu: 2 menit</span>
+                            <span>Waktu: 5 menit</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-question-circle mr-2"></i>
-                            <span>5 Soal</span>
+                            <span>10 Soal</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-trophy mr-2"></i>
@@ -103,22 +129,22 @@
                 <!-- Grammar Quiz -->
                 <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
                     <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-cogs text-3xl text-green-600"></i>
+                        <i class="fas fa-clock text-3xl text-green-600"></i>
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-4">Grammar & Tenses</h3>
-                    <p class="text-gray-600 mb-6">5 soal tentang tenses dan imperative sentences</p>
+                    <p class="text-gray-600 mb-6">15 soal tentang tenses dan struktur kalimat</p>
                     <div class="space-y-2 mb-6">
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-clock mr-2"></i>
-                            <span>Waktu: 2 menit</span>
+                            <span>Waktu: 7 menit</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-question-circle mr-2"></i>
-                            <span>5 Soal</span>
+                            <span>15 Soal</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-trophy mr-2"></i>
-                            <span>Skor: 100 poin</span>
+                            <span>Skor: 150 poin</span>
                         </div>
                     </div>
                     <button onclick="startQuiz('grammar')" class="w-full bg-green-500 text-white py-3 rounded-lg font-semibold hover:bg-green-600 transition-colors">
@@ -126,120 +152,172 @@
                     </button>
                 </div>
 
-                <!-- Pronouns Quiz -->
+                <!-- Mixed Quiz -->
                 <div class="card-hover bg-white rounded-2xl p-8 shadow-lg text-center">
                     <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i class="fas fa-users text-3xl text-purple-600"></i>
+                        <i class="fas fa-random text-3xl text-purple-600"></i>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pronouns</h3>
-                    <p class="text-gray-600 mb-6">5 soal tentang jenis-jenis kata ganti</p>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Campuran</h3>
+                    <p class="text-gray-600 mb-6">20 soal dari semua topik dengan tingkat kesulitan bervariasi</p>
                     <div class="space-y-2 mb-6">
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-clock mr-2"></i>
-                            <span>Waktu: 2 menit</span>
+                            <span>Waktu: 10 menit</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-question-circle mr-2"></i>
-                            <span>5 Soal</span>
+                            <span>20 Soal</span>
                         </div>
                         <div class="flex items-center justify-center text-sm text-gray-600">
                             <i class="fas fa-trophy mr-2"></i>
-                            <span>Skor: 100 poin</span>
+                            <span>Skor: 200 poin</span>
                         </div>
                     </div>
-                    <button onclick="startQuiz('pronouns')" class="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
+                    <button onclick="startQuiz('mixed')" class="w-full bg-purple-500 text-white py-3 rounded-lg font-semibold hover:bg-purple-600 transition-colors">
                         Mulai Quiz
                     </button>
+                </div>
+            </div>
+
+            <!-- Achievement Section -->
+            <div class="mt-16">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Prestasimu</h3>
+                    <p class="text-gray-600">Lihat progress dan achievement yang telah kamu unlocked</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="achievement-badge rounded-2xl p-6 text-center text-white">
+                        <i class="fas fa-medal text-3xl mb-3"></i>
+                        <h4 class="font-bold mb-2">First Quiz</h4>
+                        <p class="text-sm opacity-90">Menyelesaikan quiz pertama</p>
+                    </div>
+                    
+                    <div class="bg-gray-200 rounded-2xl p-6 text-center text-gray-500">
+                        <i class="fas fa-fire text-3xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Streak Master</h4>
+                        <p class="text-sm">3 quiz berturut-turut</p>
+                    </div>
+                    
+                    <div class="bg-gray-200 rounded-2xl p-6 text-center text-gray-500">
+                        <i class="fas fa-star text-3xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Perfect Score</h4>
+                        <p class="text-sm">Nilai sempurna</p>
+                    </div>
+                    
+                    <div class="bg-gray-200 rounded-2xl p-6 text-center text-gray-500">
+                        <i class="fas fa-bolt text-3xl mb-3"></i>
+                        <h4 class="font-bold mb-2">Speed Demon</h4>
+                        <p class="text-sm">Selesai dalam waktu cepat</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Quiz Interface -->
-    <section id="quiz-interface" class="py-16 hidden">
+    <!-- Quiz Section -->
+    <section id="quiz-section" class="py-16 hidden">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Quiz Header -->
-            <div class="bg-white rounded-2xl p-6 shadow-lg mb-8">
-                <div class="flex justify-between items-center mb-4">
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6">
                     <div>
-                        <h3 id="quiz-title" class="text-2xl font-bold text-gray-800">Quiz Descriptive Text</h3>
-                        <p id="quiz-subtitle" class="text-gray-600">Pertanyaan 1 dari 5</p>
+                        <h2 id="quiz-title" class="text-2xl font-bold text-gray-800">Quiz Title</h2>
+                        <p id="quiz-subtitle" class="text-gray-600">Pertanyaan <span id="current-question">1</span> dari <span id="total-questions">10</span></p>
                     </div>
-                    <div class="text-right">
-                        <div id="timer" class="text-2xl font-bold text-orange-600 timer-pulse">30</div>
-                        <p class="text-sm text-gray-600">detik</p>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-orange-600" id="timer">5:00</div>
+                            <div class="text-sm text-gray-500">Sisa Waktu</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl font-bold text-blue-600" id="score">0</div>
+                            <div class="text-sm text-gray-500">Skor</div>
+                        </div>
                     </div>
                 </div>
                 
                 <!-- Progress Bar -->
                 <div class="w-full bg-gray-200 rounded-full h-3 mb-4">
-                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full" style="width: 20%"></div>
-                </div>
-                
-                <!-- Score -->
-                <div class="flex justify-between text-sm text-gray-600">
-                    <span>Skor: <span id="current-score">0</span></span>
-                    <span><span id="current-question">1</span>/5</span>
+                    <div id="progress-bar" class="progress-bar bg-gradient-to-r from-blue-500 to-purple-600 h-3 rounded-full" style="width: 10%"></div>
                 </div>
             </div>
 
-            <!-- Question Card -->
-            <div class="quiz-card rounded-2xl p-8 shadow-lg mb-8">
-                <div id="question-text" class="text-xl font-semibold text-gray-800 mb-6">
-                    <!-- Question will be inserted here -->
+            <!-- Quiz Card -->
+            <div class="quiz-card rounded-2xl shadow-lg p-6 md:p-8">
+                <div id="question-container">
+                    <h3 id="question-text" class="text-xl md:text-2xl font-bold text-gray-800 mb-8">
+                        Loading question...
+                    </h3>
+                    
+                    <div id="options-container" class="space-y-4">
+                        <!-- Options will be inserted here -->
+                    </div>
                 </div>
-                
-                <div id="options-container" class="space-y-4">
-                    <!-- Options will be inserted here -->
-                </div>
-            </div>
 
-            <!-- Action Buttons -->
-            <div class="flex justify-between">
-                <button id="prev-btn" onclick="previousQuestion()" class="bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-                    <i class="fas fa-arrow-left mr-2"></i>Sebelumnya
-                </button>
-                <button id="next-btn" onclick="nextQuestion()" class="bg-orange-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-                    Selanjutnya<i class="fas fa-arrow-right ml-2"></i>
-                </button>
+                <!-- Quiz Navigation -->
+                <div class="flex justify-between items-center mt-8">
+                    <button id="prev-btn" onclick="previousQuestion()" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-400 transition-colors disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                        <i class="fas fa-arrow-left mr-2"></i>Sebelumnya
+                    </button>
+                    
+                    <div class="flex space-x-4">
+                        <button onclick="giveUp()" class="px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-600 transition-colors">
+                            Menyerah
+                        </button>
+                        <button id="next-btn" onclick="nextQuestion()" class="px-6 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                            Selanjutnya<i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Results Section -->
-    <section id="results" class="py-16 hidden">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="bg-white rounded-2xl p-8 shadow-lg">
-                <div id="result-icon" class="w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center">
-                    <!-- Icon will be inserted here -->
+    <section id="results-section" class="py-16 hidden">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center">
+                <div class="mb-8">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <div id="score-circle" class="score-circle w-full h-full rounded-full flex items-center justify-center" style="--percentage: 0deg">
+                            <div class="bg-white w-24 h-24 rounded-full flex items-center justify-center">
+                                <span id="final-score" class="text-3xl font-bold text-gray-800">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Selamat!</h2>
+                    <p id="score-message" class="text-lg text-gray-600 mb-6">Kamu telah menyelesaikan quiz!</p>
                 </div>
-                
-                <h2 id="result-title" class="text-3xl font-bold text-gray-800 mb-4">Selamat!</h2>
-                <p id="result-message" class="text-lg text-gray-600 mb-8">
-                    <!-- Message will be inserted here -->
-                </p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-blue-50 p-6 rounded-xl">
-                        <div id="final-score" class="text-3xl font-bold text-blue-600 mb-2">85</div>
-                        <p class="text-gray-600">Skor Akhir</p>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-blue-600" id="correct-answers">0</div>
+                        <div class="text-sm text-gray-500">Jawaban Benar</div>
                     </div>
-                    <div class="bg-green-50 p-6 rounded-xl">
-                        <div id="correct-answers" class="text-3xl font-bold text-green-600 mb-2">4</div>
-                        <p class="text-gray-600">Jawaban Benar</p>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-red-600" id="wrong-answers">0</div>
+                        <div class="text-sm text-gray-500">Jawaban Salah</div>
                     </div>
-                    <div class="bg-orange-50 p-6 rounded-xl">
-                        <div id="time-used" class="text-3xl font-bold text-orange-600 mb-2">1:45</div>
-                        <p class="text-gray-600">Waktu</p>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-orange-600" id="time-taken">0:00</div>
+                        <div class="text-sm text-gray-500">Waktu</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-2xl font-bold text-purple-600" id="accuracy">0%</div>
+                        <div class="text-sm text-gray-500">Akurasi</div>
                     </div>
                 </div>
-                
-                <div class="space-y-4">
-                    <button onclick="restartQuiz()" class="w-full bg-orange-500 text-white py-3 rounded-lg font-semibold hover:bg-orange-600 transition-colors">
-                        <i class="fas fa-redo mr-2"></i>Coba Lagi
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="restartQuiz()" class="px-8 py-3 bg-blue-500 text-white rounded-lg font-semibold hover:bg-blue-600 transition-colors">
+                        <i class="fas fa-redo mr-2"></i>Ulangi Quiz
                     </button>
-                    <button onclick="backToSelection()" class="w-full bg-gray-500 text-white py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors">
-                        <i class="fas fa-home mr-2"></i>Kembali ke Beranda
+                    <button onclick="backToSelection()" class="px-8 py-3 bg-gray-500 text-white rounded-lg font-semibold hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-home mr-2"></i>Kembali ke Menu
+                    </button>
+                    <button onclick="tryAnotherQuiz()" class="px-8 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
+                        <i class="fas fa-random mr-2"></i>Quiz Lain
                     </button>
                 </div>
             </div>
@@ -250,13 +328,17 @@
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <div class="flex items-center justify-center mb-4">
+                <div class="flex items-center justify-center mb-6">
                     <i class="fas fa-graduation-cap text-3xl text-indigo-400 mr-3"></i>
                     <span class="text-2xl font-bold">English Learning Hub</span>
                 </div>
-                <p class="text-gray-400 mb-6">Materi Bahasa Inggris untuk Kelas 10 SMA</p>
+                <p class="text-gray-300 mb-6">
+                    Platform pembelajaran Bahasa Inggris untuk siswa SMA kelas 10
+                </p>
                 <div class="border-t border-gray-700 pt-6">
-                    <p class="text-gray-500">&copy; 2024 English Learning Hub. Dibuat untuk keperluan edukasi.</p>
+                    <p class="text-gray-400 text-sm">
+                        © 2024 English Learning Hub. Dibuat dengan ❤️ untuk pendidikan.
+                    </p>
                 </div>
             </div>
         </div>
@@ -266,166 +348,578 @@
         // Quiz Data
         const quizData = {
             descriptive: {
-                title: "Quiz Descriptive Text",
+                title: "Descriptive Text Quiz",
+                subtitle: "Uji pemahamanmu tentang descriptive text",
+                timeLimit: 300, // 5 minutes
                 questions: [
                     {
-                        question: "Bagian mana yang berfungsi untuk mengenalkan subjek dalam descriptive text?",
-                        options: ["Description", "Identification", "Orientation", "Complication"],
+                        question: "Apa tujuan utama dari descriptive text?",
+                        options: [
+                            "Untuk menceritakan kejadian masa lalu",
+                            "Untuk menggambarkan orang, tempat, atau benda",
+                            "Untuk memberikan instruksi",
+                            "Untuk menyampaikan opini"
+                        ],
                         correct: 1,
-                        explanation: "Identification berfungsi untuk mengenalkan subjek yang akan dideskripsikan."
+                        explanation: "Descriptive text bertujuan untuk menggambarkan atau mendeskripsikan seseorang, tempat, atau benda secara detail."
                     },
                     {
-                        question: "Ciri bahasa apa yang paling sering digunakan dalam descriptive text?",
-                        options: ["Past tense", "Present tense", "Future tense", "Conditional"],
-                        correct: 1,
-                        explanation: "Simple present tense digunakan untuk menyatakan fakta dan ciri-ciri umum."
+                        question: "Bagian pertama dari generic structure descriptive text adalah?",
+                        options: [
+                            "Identification",
+                            "Description",
+                            "Orientation",
+                            "Reorientation"
+                        ],
+                        correct: 0,
+                        explanation: "Generic structure descriptive text terdiri dari Identification (pengenalan) dan Description (deskripsi)."
                     },
                     {
-                        question: "Kata sifat dalam descriptive text berfungsi untuk...",
-                        options: ["Menunjukkan waktu", "Menggambarkan ciri-ciri", "Menunjukkan tempat", "Menyatakan perintah"],
-                        correct: 1,
-                        explanation: "Kata sifat (adjectives) digunakan untuk menggambarkan ciri-ciri subjek."
-                    },
-                    {
-                        question: "Struktur descriptive text yang benar adalah...",
-                        options: ["Description → Identification", "Identification → Description", "Orientation → Complication", "Thesis → Arguments"],
-                        correct: 1,
-                        explanation: "Struktur descriptive text adalah Identification (pengenalan) kemudian Description (deskripsi)."
-                    },
-                    {
-                        question: "Kalimat berikut yang merupakan contoh identification adalah...",
-                        options: ["She has long hair", "My mother is very kind", "Borobudur is a famous temple", "The building is tall"],
+                        question: "Berikut ini adalah ciri kebahasaan descriptive text, KECUALI:",
+                        options: [
+                            "Menggunakan present tense",
+                            "Menggunakan adjectives",
+                            "Menggunakan conjunctions",
+                            "Menggunakan action verbs"
+                        ],
                         correct: 2,
-                        explanation: "Borobudur is a famous temple mengenalkan subjek (Borobudur) yang akan dideskripsikan."
+                        explanation: "Conjunctions lebih sering digunakan dalam procedural text, bukan descriptive text."
+                    },
+                    {
+                        question: "Kata 'beautiful' dalam descriptive text termasuk dalam kategori:",
+                        options: [
+                            "Noun",
+                            "Verb",
+                            "Adjective",
+                            "Adverb"
+                        ],
+                        correct: 2,
+                        explanation: "'Beautiful' adalah adjective (kata sifat) yang digunakan untuk mendeskripsikan sifat dari objek."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan figurative language?",
+                        options: [
+                            "The building is tall",
+                            "The building is 50 meters high",
+                            "The building touches the sky",
+                            "The building has 20 floors"
+                        ],
+                        correct: 2,
+                        explanation: "'Touches the sky' adalah hyperbole (perbandingan berlebihan) yang termasuk dalam figurative language."
+                    },
+                    {
+                        question: "Dalam descriptive text, tense yang paling sering digunakan adalah:",
+                        options: [
+                            "Past tense",
+                            "Present tense",
+                            "Future tense",
+                            "Perfect tense"
+                        ],
+                        correct: 1,
+                        explanation: "Present tense digunakan karena descriptive text menggambarkan karakteristik yang umum dan tetap."
+                    },
+                    {
+                        question: "Apa perbedaan antara 'description' dan 'identification'?",
+                        options: [
+                            "Sama saja",
+                            "Identification mengenalkan objek, description mendeskripsikan detailnya",
+                            "Description lebih penting",
+                            "Identification tidak perlu digunakan"
+                        ],
+                        correct: 1,
+                        explanation: "Identification berfungsi untuk mengenalkan objek yang akan dideskripsikan, sedangkan description memberikan detail tentang objek tersebut."
+                    },
+                    {
+                        question: "Kata 'has long black hair' adalah contoh penggunaan:",
+                        options: [
+                            "Simple present tense",
+                            "Present continuous tense",
+                            "Present perfect tense",
+                            "Past tense"
+                        ],
+                        correct: 0,
+                        explanation: "'Has' adalah bentuk simple present tense dari verb 'have' yang menunjukkan kepemilikan atau karakteristik."
+                    },
+                    {
+                        question: "Manakah yang BUKAN merupakan tujuan penggunaan adjectives dalam descriptive text?",
+                        options: [
+                            "Membuat deskripsi lebih detail",
+                            "Membuat teks lebih menarik",
+                            "Memberikan informasi tambahan",
+                            "Menyuruh pembaca melakukan sesuatu"
+                        ],
+                        correct: 3,
+                        explanation: "Menyuruh pembaca melakukan sesuatu adalah tujuan dari procedural text, bukan descriptive text."
+                    },
+                    {
+                        question: "Dalam descriptive text tentang tempat, kata 'spacious' digunakan untuk menggambarkan:",
+                        options: [
+                            "Warna",
+                            "Ukuran",
+                            "Bentuk",
+                            "Tekstur"
+                        ],
+                        correct: 1,
+                        explanation: "'Spacious' berarti luas, yang menggambarkan ukuran dari suatu tempat."
                     }
                 ]
             },
             grammar: {
-                title: "Quiz Grammar & Tenses",
+                title: "Grammar & Tenses Quiz",
+                subtitle: "Uji pemahamanmu tentang tenses dan grammar",
+                timeLimit: 420, // 7 minutes
                 questions: [
                     {
-                        question: "Rumus simple present tense untuk kalimat positif adalah...",
-                        options: ["Subject + V2", "Subject + V1 (+s/es)", "Subject + was/were + V-ing", "Subject + will + V1"],
+                        question: "Manakah kalimat berikut yang menggunakan Simple Present Tense dengan benar?",
+                        options: [
+                            "She is go to school every day",
+                            "She goes to school every day",
+                            "She go to school every day",
+                            "She going to school every day"
+                        ],
                         correct: 1,
-                        explanation: "Simple present tense positif: Subject + V1 (+s/es untuk he/she/it)."
+                        explanation: "Simple present tense untuk subject 'she' menggunakan 'goes' (V1 + s/es)."
                     },
                     {
-                        question: "Kalimat 'She plays tennis every day' menggunakan tense apa?",
-                        options: ["Simple past", "Simple present", "Past continuous", "Future"],
+                        question: "Dalam kalimat 'I am studying English now', tense yang digunakan adalah:",
+                        options: [
+                            "Simple Present",
+                            "Present Continuous",
+                            "Present Perfect",
+                            "Simple Past"
+                        ],
                         correct: 1,
-                        explanation: "Kalimat ini menggunakan simple present tense untuk kebiasaan."
+                        explanation: "'Am studying' adalah bentuk present continuous tense (am/is/are + V-ing)."
                     },
                     {
-                        question: "Imperative sentence digunakan untuk...",
-                        options: ["Menyatakan fakta", "Memberi perintah", "Menanyakan informasi", "Menyatakan kebiasaan"],
+                        question: "Apa bentuk past tense dari 'go'?",
+                        options: [
+                            "goed",
+                            "went",
+                            "gone",
+                            "going"
+                        ],
                         correct: 1,
-                        explanation: "Imperative sentence digunakan untuk memberi perintah, permintaan, atau nasihat."
+                        explanation: "'Went' adalah bentuk past tense (V2) dari verb 'go'."
                     },
                     {
-                        question: "Bentuk negative dari 'I go to school' adalah...",
-                        options: ["I not go to school", "I don't go to school", "I doesn't go to school", "I am not go to school"],
+                        question: "Manakah kalimat berikut yang menggunakan Past Continuous Tense?",
+                        options: [
+                            "I was study when he called",
+                            "I was studying when he called",
+                            "I studied when he called",
+                            "I study when he called"
+                        ],
                         correct: 1,
-                        explanation: "Bentuk negative simple present: Subject + do/does + not + V1."
+                        explanation: "Past continuous tense menggunakan 'was/were + V-ing' untuk menyatakan kejadian yang sedang berlangsung di masa lalu."
                     },
                     {
-                        question: "Kalimat yang merupakan imperative sentence adalah...",
-                        options: ["You are beautiful", "Close the door!", "What time is it?", "I like coffee"],
+                        question: "Dalam kalimat 'She has lived here for five years', tense yang digunakan adalah:",
+                        options: [
+                            "Present Perfect",
+                            "Present Simple",
+                            "Past Perfect",
+                            "Present Continuous"
+                        ],
+                        correct: 0,
+                        explanation: "'Has lived' adalah bentuk present perfect tense (have/has + V3) yang menunjukkan kejadian yang dimulai di masa lalu dan masih berlanjut sampai sekarang."
+                    },
+                    {
+                        question: "Apa perbedaan antara 'since' dan 'for' dalam Present Perfect Tense?",
+                        options: [
+                            "Tidak ada perbedaan",
+                            "Since untuk durasi, for untuk waktu spesifik",
+                            "Since untuk waktu spesifik, for untuk durasi",
+                            "Keduanya hanya untuk past tense"
+                        ],
+                        correct: 2,
+                        explanation: "'Since' digunakan untuk waktu spesifik (since 2020), 'for' digunakan untuk durasi (for 2 years)."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan Future Simple Tense dengan benar?",
+                        options: [
+                            "I will goes to school tomorrow",
+                            "I will go to school tomorrow",
+                            "I will going to school tomorrow",
+                            "I will went to school tomorrow"
+                        ],
                         correct: 1,
-                        explanation: "Close the door! adalah kalimat perintah (imperative sentence)."
+                        explanation: "Future simple tense menggunakan 'will + V1' (will go)."
+                    },
+                    {
+                        question: "Dalam kalimat 'If I were rich, I would buy a mansion', conditional type berapa yang digunakan?",
+                        options: [
+                            "Type 0",
+                            "Type 1",
+                            "Type 2",
+                            "Type 3"
+                        ],
+                        correct: 2,
+                        explanation: "Type 2 conditional menggunakan 'if + past simple, would + V1' untuk menyatakan situasi yang tidak nyata/imaginer."
+                    },
+                    {
+                        question: "Apa arti dari 'used to' dalam kalimat 'I used to play football'?",
+                        options: [
+                            "Saya sedang bermain sepak bola",
+                            "Saya biasa bermain sepak bola",
+                            "Saya akan bermain sepak bola",
+                            "Saya harus bermain sepak bola"
+                        ],
+                        correct: 1,
+                        explanation: "'Used to' menyatakan kebiasaan di masa lalu yang sekarang tidak dilakukan lagi."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan Present Perfect Continuous Tense?",
+                        options: [
+                            "I have studied English for 2 hours",
+                            "I have been studying English for 2 hours",
+                            "I studied English for 2 hours",
+                            "I am studying English for 2 hours"
+                        ],
+                        correct: 1,
+                        explanation: "Present perfect continuous tense menggunakan 'have/has been + V-ing' untuk menyatakan kejadian yang dimulai di masa lalu dan masih berlangsung."
+                    },
+                    {
+                        question: "Dalam kalimat 'By the time we arrived, the movie had started', tense yang digunakan adalah:",
+                        options: [
+                            "Past Simple",
+                            "Past Perfect",
+                            "Present Perfect",
+                            "Future Perfect"
+                        ],
+                        correct: 1,
+                        explanation: "'Had started' adalah bentuk past perfect tense yang menunjukkan kejadian yang terjadi sebelum kejadian lain di masa lalu."
+                    },
+                    {
+                        question: "Apa bentuk negative dari 'I am going to school'?",
+                        options: [
+                            "I am not going to school",
+                            "I don't going to school",
+                            "I am not go to school",
+                            "I not going to school"
+                        ],
+                        correct: 0,
+                        explanation: "Bentuk negative dari present continuous adalah 'am/is/are + not + V-ing'."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan modals dengan benar?",
+                        options: [
+                            "She can to swim",
+                            "She can swimming",
+                            "She can swim",
+                            "She can swims"
+                        ],
+                        correct: 2,
+                        explanation: "Modals (can, could, will, would, etc.) selalu diikuti oleh V1 tanpa 'to'."
+                    },
+                    {
+                        question: "Dalam passive voice, manakah kalimat yang benar?",
+                        options: [
+                            "The book was read by me",
+                            "The book was reads by me",
+                            "The book was reading by me",
+                            "The book read by me"
+                        ],
+                        correct: 0,
+                        explanation: "Passive voice menggunakan 'be + V3' (was read) dengan agent yang ditandai dengan 'by'."
                     }
                 ]
             },
-            pronouns: {
-                title: "Quiz Pronouns",
+            mixed: {
+                title: "Mixed Quiz",
+                subtitle: "Uji pemahamanmu dari semua topik",
+                timeLimit: 600, // 10 minutes
                 questions: [
                     {
-                        question: "Pronoun 'they' digunakan untuk...",
-                        options: ["Orang ketiga tunggal", "Orang ketiga jamak", "Orang pertama", "Orang kedua"],
+                        question: "Dalam descriptive text, bagian yang berfungsi untuk mengenalkan objek yang akan dideskripsikan adalah:",
+                        options: [
+                            "Description",
+                            "Identification",
+                            "Orientation",
+                            "Reorientation"
+                        ],
                         correct: 1,
-                        explanation: "'They' adalah pronoun untuk orang ketiga jamak (they/them)."
+                        explanation: "Identification adalah bagian yang berfungsi untuk mengenalkan objek yang akan dideskripsikan dalam descriptive text."
                     },
                     {
-                        question: "Pronoun yang benar untuk menggantikan 'Maria' adalah...",
-                        options: ["He", "She", "It", "They"],
+                        question: "Manakah kalimat berikut yang menggunakan Present Perfect Tense dengan benar?",
+                        options: [
+                            "I have went to school",
+                            "I have gone to school",
+                            "I have go to school",
+                            "I have going to school"
+                        ],
                         correct: 1,
-                        explanation: "Maria adalah perempuan, jika digunakan 'she' sebagai subject pronoun."
+                        explanation: "Present perfect tense menggunakan 'have/has + V3'. 'Gone' adalah V3 dari 'go'."
                     },
                     {
-                        question: "Dalam kalimat 'I see ___', kata yang tepat untuk mengisi titik-titik adalah...",
-                        options: ["he", "him", "his", "himself"],
+                        question: "Dalam reported speech, kalimat 'I am happy' menjadi:",
+                        options: [
+                            "He said he is happy",
+                            "He said he was happy",
+                            "He said I am happy",
+                            "He said he were happy"
+                        ],
                         correct: 1,
-                        explanation: "Setelah verb 'see' digunakan object pronoun 'him'."
+                        explanation: "Dalam reported speech, present tense berubah menjadi past tense, dan pronoun 'I' berubah menjadi 'he/she'."
                     },
                     {
-                        question: "Reflexive pronoun untuk 'I' adalah...",
-                        options: ["me", "my", "myself", "mine"],
+                        question: "Conditional sentence 'If it rains tomorrow, I will stay at home' adalah contoh dari:",
+                        options: [
+                            "Type 0 conditional",
+                            "Type 1 conditional",
+                            "Type 2 conditional",
+                            "Type 3 conditional"
+                        ],
+                        correct: 1,
+                        explanation: "Type 1 conditional menggunakan 'if + present simple, will + V1' untuk menyatakan kemungkinan nyata di masa depan."
+                    },
+                    {
+                        question: "Kata 'beautifully' dalam kalimat 'She sings beautifully' adalah:",
+                        options: [
+                            "Adjective",
+                            "Adverb",
+                            "Noun",
+                            "Verb"
+                        ],
+                        correct: 1,
+                        explanation: "'Beautifully' adalah adverb (kata keterangan) yang menjelaskan bagaimana 'she sings'."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan figurative language?",
+                        options: [
+                            "The mountain is high",
+                            "The mountain is 3000 meters tall",
+                            "The mountain kisses the sky",
+                            "The mountain has snow on top"
+                        ],
                         correct: 2,
-                        explanation: "Reflexive pronoun untuk 'I' adalah 'myself'."
+                        explanation: "'Kisses the sky' adalah personifikasi, yaitu memberikan sifat manusia pada benda mati."
                     },
                     {
-                        question: "Pronoun yang menunjukkan kepemilikan adalah...",
-                        options: ["Subject pronoun", "Object pronoun", "Possessive pronoun", "Reflexive pronoun"],
+                        question: "Dalam kalimat 'By next year, I will have graduated', tense yang digunakan adalah:",
+                        options: [
+                            "Future Simple",
+                            "Future Perfect",
+                            "Future Continuous",
+                            "Present Perfect"
+                        ],
+                        correct: 1,
+                        explanation: "Future perfect tense menggunakan 'will have + V3' untuk menyatakan kejadian yang akan selesai di masa depan."
+                    },
+                    {
+                        question: "Apa fungsi dari adjectives dalam descriptive text?",
+                        options: [
+                            "Menyatakan waktu",
+                            "Menyatakan tempat",
+                            "Memberikan deskripsi yang lebih detail",
+                            "Menyatakan tindakan"
+                        ],
                         correct: 2,
-                        explanation: "Possessive pronoun menunjukkan kepemilikan (mine, yours, his, hers, etc.)."
+                        explanation: "Adjectives (kata sifat) digunakan untuk memberikan deskripsi yang lebih detail tentang objek yang dideskripsikan."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan passive voice dengan benar?",
+                        options: [
+                            "The cake was baked by my mother",
+                            "The cake baked by my mother",
+                            "The cake was bake by my mother",
+                            "The cake was baking by my mother"
+                        ],
+                        correct: 0,
+                        explanation: "Passive voice yang benar menggunakan 'be + V3' (was baked) dengan agent yang ditandai dengan 'by'."
+                    },
+                    {
+                        question: "Dalam conditional type 2, struktur yang benar adalah:",
+                        options: [
+                            "If + present simple, will + V1",
+                            "If + past simple, would + V1",
+                            "If + past perfect, would have + V3",
+                            "If + present perfect, will have + V3"
+                        ],
+                        correct: 1,
+                        explanation: "Type 2 conditional menggunakan 'if + past simple, would + V1' untuk situasi yang tidak nyata di masa kini."
+                    },
+                    {
+                        question: "Kata 'who' dalam kalimat 'The girl who is standing there is my sister' berfungsi sebagai:",
+                        options: [
+                            "Subject",
+                            "Object",
+                            "Relative pronoun",
+                            "Conjunction"
+                        ],
+                        correct: 2,
+                        explanation: "'Who' adalah relative pronoun yang menghubungkan dua kalimat dan merujuk pada 'the girl'."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menunjukkan kebiasaan di masa lalu?",
+                        options: [
+                            "I play football",
+                            "I played football",
+                            "I used to play football",
+                            "I am playing football"
+                        ],
+                        correct: 2,
+                        explanation: "'Used to' menyatakan kebiasaan di masa lalu yang sekarang tidak dilakukan lagi."
+                    },
+                    {
+                        question: "Dalam reported speech, perintah 'Sit down!' menjadi:",
+                        options: [
+                            "He told me sit down",
+                            "He told me to sit down",
+                            "He told me sitting down",
+                            "He told me sat down"
+                        ],
+                        correct: 1,
+                        explanation: "Perintah dalam reported speech menggunakan 'told/asked + object + to + V1'."
+                    },
+                    {
+                        question: "Apa perbedaan antara 'few' dan 'a few'?",
+                        options: [
+                            "Tidak ada perbedaan",
+                            "Few = positif, a few = negatif",
+                            "Few = negatif, a few = positif",
+                            "Few untuk countable, a few untuk uncountable"
+                        ],
+                        correct: 2,
+                        explanation: "'Few' memiliki konotasi negatif (hampir tidak ada), 'a few' memiliki konotasi positif (beberapa)."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menggunakan present perfect continuous tense dengan benar?",
+                        options: [
+                            "I have studied here for 2 years",
+                            "I have been studying here for 2 years",
+                            "I am studying here for 2 years",
+                            "I study here for 2 years"
+                        ],
+                        correct: 1,
+                        explanation: "Present perfect continuous tense menggunakan 'have/has been + V-ing' untuk kejadian yang dimulai di masa lalu dan masih berlangsung."
+                    },
+                    {
+                        question: "Dalam descriptive text, penggunaan sensory details bertujuan untuk:",
+                        options: [
+                            "Memberikan data statistik",
+                            "Membuat pembaca merasa seperti mengalami langsung",
+                            "Menyampaikan fakta ilmiah",
+                            "Memberikan argumentasi"
+                        ],
+                        correct: 1,
+                        explanation: "Sensory details (detail indera) membuat pembaca dapat membayangkan dan merasa seperti mengalami objek yang dideskripsikan."
+                    },
+                    {
+                        question: "Apa yang dimaksud dengan 'generic structure' dalam sebuah teks?",
+                        options: [
+                            "Struktur gramatikal kalimat",
+                            "Struktur umum yang menjadi ciri khas jenis teks tersebut",
+                            "Struktur paragraf dalam teks",
+                            "Struktur bahasa yang digunakan"
+                        ],
+                        correct: 1,
+                        explanation: "Generic structure adalah struktur umum yang menjadi ciri khas dari suatu jenis teks, seperti identification-description untuk descriptive text."
+                    },
+                    {
+                        question: "Manakah kalimat berikut yang menunjukkan conditional type 3?",
+                        options: [
+                            "If I study hard, I will pass",
+                            "If I studied hard, I would pass",
+                            "If I had studied hard, I would have passed",
+                            "If I study hard, I pass"
+                        ],
+                        correct: 2,
+                        explanation: "Type 3 conditional menggunakan 'if + past perfect, would have + V3' untuk menyatakan penyesalan tentang masa lalu."
+                    },
+                    {
+                        question: "Dalam kalimat 'The book which is on the table is mine', 'which' merujuk pada:",
+                        options: [
+                            "The table",
+                            "The book",
+                            "Mine",
+                            "On the table"
+                        ],
+                        correct: 1,
+                        explanation: "'Which' adalah relative pronoun yang merujuk pada 'the book' (benda) yang menjadi subject yang dideskripsikan."
                     }
                 ]
             }
         };
 
+        // Quiz State
         let currentQuiz = null;
         let currentQuestionIndex = 0;
         let score = 0;
-        let selectedAnswers = [];
+        let timeLeft = 0;
         let timer = null;
-        let timeLeft = 30;
-        let totalTime = 0;
+        let startTime = null;
+        let userAnswers = [];
 
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+
+        // Start Quiz Function
         function startQuiz(quizType) {
             currentQuiz = quizData[quizType];
             currentQuestionIndex = 0;
             score = 0;
-            selectedAnswers = [];
-            totalTime = 0;
+            userAnswers = [];
+            startTime = Date.now();
             
+            // Hide quiz selection and show quiz section
             document.getElementById('quiz-selection').classList.add('hidden');
-            document.getElementById('quiz-interface').classList.remove('hidden');
-            document.getElementById('results').classList.add('hidden');
+            document.getElementById('quiz-section').classList.remove('hidden');
             
+            // Set quiz info
             document.getElementById('quiz-title').textContent = currentQuiz.title;
+            document.getElementById('quiz-subtitle').textContent = currentQuiz.subtitle;
+            document.getElementById('total-questions').textContent = currentQuiz.questions.length;
             
+            // Set timer
+            timeLeft = currentQuiz.timeLimit;
+            updateTimer();
+            startTimer();
+            
+            // Load first question
             loadQuestion();
+            
+            // Update progress
+            updateProgress();
         }
 
+        // Load Question Function
         function loadQuestion() {
             const question = currentQuiz.questions[currentQuestionIndex];
             
-            document.getElementById('quiz-subtitle').textContent = `Pertanyaan ${currentQuestionIndex + 1} dari ${currentQuiz.questions.length}`;
             document.getElementById('current-question').textContent = currentQuestionIndex + 1;
-            document.getElementById('current-score').textContent = score;
-            
-            // Update progress bar
-            const progress = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
-            document.getElementById('progress-bar').style.width = `${progress}%`;
-            
-            // Load question text
             document.getElementById('question-text').textContent = question.question;
             
-            // Load options
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
             
             question.options.forEach((option, index) => {
                 const optionDiv = document.createElement('div');
-                optionDiv.className = 'option-hover bg-white p-4 rounded-lg border text-gray-700';
+                optionDiv.className = 'option-hover bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-all';
                 optionDiv.innerHTML = `
-                    <div class="flex items-center">
-                        <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-4 font-semibold">
-                            ${String.fromCharCode(65 + index)}
-                        </div>
-                        <span>${option}</span>
-                    </div>
+                    <label class="flex items-center cursor-pointer">
+                        <input type="radio" name="answer" value="${index}" class="mr-3 text-blue-600">
+                        <span class="text-gray-700">${option}</span>
+                    </label>
                 `;
-                optionDiv.onclick = () => selectOption(index, optionDiv);
+                
+                optionDiv.addEventListener('click', () => {
+                    selectOption(index);
+                });
+                
                 optionsContainer.appendChild(optionDiv);
             });
             
@@ -433,146 +927,195 @@
             document.getElementById('prev-btn').disabled = currentQuestionIndex === 0;
             document.getElementById('next-btn').textContent = currentQuestionIndex === currentQuiz.questions.length - 1 ? 'Selesai' : 'Selanjutnya';
             
-            // Start timer
-            startTimer();
+            // Load previous answer if exists
+            if (userAnswers[currentQuestionIndex] !== undefined) {
+                selectOption(userAnswers[currentQuestionIndex]);
+            }
         }
 
-        function selectOption(optionIndex, optionElement) {
+        // Select Option Function
+        function selectOption(index) {
             // Remove previous selections
-            document.querySelectorAll('.option-selected').forEach(el => {
-                el.classList.remove('option-selected');
+            document.querySelectorAll('.option-hover').forEach(option => {
+                option.classList.remove('option-selected');
             });
             
-            // Mark selected option
-            optionElement.classList.add('option-selected');
-            selectedAnswers[currentQuestionIndex] = optionIndex;
+            // Select current option
+            const options = document.querySelectorAll('.option-hover');
+            options[index].classList.add('option-selected');
+            
+            // Check the radio button
+            const radio = options[index].querySelector('input[type="radio"]');
+            radio.checked = true;
+            
+            // Store answer
+            userAnswers[currentQuestionIndex] = index;
         }
 
+        // Next Question Function
         function nextQuestion() {
-            if (selectedAnswers[currentQuestionIndex] === undefined) {
-                alert('Silakan pilih jawaban terlebih dahulu!');
-                return;
-            }
-            
-            stopTimer();
-            
-            if (selectedAnswers[currentQuestionIndex] === currentQuiz.questions[currentQuestionIndex].correct) {
-                score += 20; // 100 points total / 5 questions
-            }
-            
             if (currentQuestionIndex < currentQuiz.questions.length - 1) {
                 currentQuestionIndex++;
                 loadQuestion();
+                updateProgress();
             } else {
-                showResults();
+                finishQuiz();
             }
         }
 
+        // Previous Question Function
         function previousQuestion() {
             if (currentQuestionIndex > 0) {
-                stopTimer();
                 currentQuestionIndex--;
                 loadQuestion();
-                
-                // Restore previous selection
-                if (selectedAnswers[currentQuestionIndex] !== undefined) {
-                    const options = document.querySelectorAll('.option-hover');
-                    options[selectedAnswers[currentQuestionIndex]].classList.add('option-selected');
-                }
+                updateProgress();
             }
         }
 
+        // Update Progress Function
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('progress-bar').style.width = progress + '%';
+        }
+
+        // Timer Functions
         function startTimer() {
-            timeLeft = 30;
-            document.getElementById('timer').textContent = timeLeft;
-            
             timer = setInterval(() => {
                 timeLeft--;
-                totalTime++;
-                document.getElementById('timer').textContent = timeLeft;
-                
-                if (timeLeft <= 10) {
-                    document.getElementById('timer').classList.add('text-red-600');
-                } else {
-                    document.getElementById('timer').classList.remove('text-red-600');
-                }
+                updateTimer();
                 
                 if (timeLeft <= 0) {
-                    nextQuestion();
+                    finishQuiz();
                 }
             }, 1000);
         }
 
-        function stopTimer() {
-            if (timer) {
-                clearInterval(timer);
-                timer = null;
+        function updateTimer() {
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            document.getElementById('timer').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 30) {
+                document.getElementById('timer').classList.add('timer-pulse', 'text-red-600');
             }
         }
 
-        function showResults() {
-            document.getElementById('quiz-interface').classList.add('hidden');
-            document.getElementById('results').classList.remove('hidden');
+        // Give Up Function
+        function giveUp() {
+            if (confirm('Apakah kamu yakin ingin menyerah? Progress akan hilang.')) {
+                finishQuiz();
+            }
+        }
+
+        // Finish Quiz Function
+        function finishQuiz() {
+            clearInterval(timer);
             
-            const correctAnswers = Math.floor(score / 20);
-            const percentage = (score / 100) * 100;
+            // Calculate score
+            let correctAnswers = 0;
+            currentQuiz.questions.forEach((question, index) => {
+                if (userAnswers[index] === question.correct) {
+                    correctAnswers++;
+                }
+            });
             
-            // Update result display
-            document.getElementById('final-score').textContent = score;
+            score = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
+            
+            // Show results
+            showResults(correctAnswers);
+        }
+
+        // Show Results Function
+        function showResults(correctAnswers) {
+            document.getElementById('quiz-section').classList.add('hidden');
+            document.getElementById('results-section').classList.remove('hidden');
+            
+            const wrongAnswers = currentQuiz.questions.length - correctAnswers;
+            const timeTaken = Math.floor((Date.now() - startTime) / 1000);
+            const accuracy = Math.round((correctAnswers / currentQuiz.questions.length) * 100);
+            
+            // Update score circle
+            const percentage = (correctAnswers / currentQuiz.questions.length) * 360;
+            document.getElementById('score-circle').style.setProperty('--percentage', percentage + 'deg');
+            
+            // Update results
+            document.getElementById('final-score').textContent = score + '%';
             document.getElementById('correct-answers').textContent = correctAnswers;
-            document.getElementById('time-used').textContent = `${Math.floor(totalTime / 60)}:${(totalTime % 60).toString().padStart(2, '0')}`;
+            document.getElementById('wrong-answers').textContent = wrongAnswers;
+            document.getElementById('time-taken').textContent = formatTime(timeTaken);
+            document.getElementById('accuracy').textContent = accuracy + '%';
             
-            // Determine result message and icon
-            const resultIcon = document.getElementById('result-icon');
-            const resultTitle = document.getElementById('result-title');
-            const resultMessage = document.getElementById('result-message');
-            
-            if (percentage >= 80) {
-                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-yellow-400 to-yellow-600 celebration';
-                resultIcon.innerHTML = '<i class="fas fa-trophy text-6xl text-white"></i>';
-                resultTitle.textContent = 'Luar Biasa!';
-                resultMessage.textContent = 'Kamu mendapatkan skor sempurna! Pengetahuanmu tentang materi ini sangat baik.';
-            } else if (percentage >= 60) {
-                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-green-400 to-green-600 celebration';
-                resultIcon.innerHTML = '<i class="fas fa-medal text-6xl text-white"></i>';
-                resultTitle.textContent = 'Bagus Sekali!';
-                resultMessage.textContent = 'Kamu sudah menguasai sebagian besar materi. Terus berlatih untuk hasil yang lebih baik!';
-            } else if (percentage >= 40) {
-                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-blue-400 to-blue-600 celebration';
-                resultIcon.innerHTML = '<i class="fas fa-thumbs-up text-6xl text-white"></i>';
-                resultTitle.textContent = 'Cukup Baik!';
-                resultMessage.textContent = 'Kamu sudah memahami dasar-dasar materi. Cobalah belajar lagi dan coba sekali lagi!';
+            // Update message
+            let message = '';
+            if (score >= 90) {
+                message = 'Luar biasa! Kamu benar-benar menguasai materi ini!';
+            } else if (score >= 75) {
+                message = 'Bagus sekali! Kamu sudah cukup memahami materi ini.';
+            } else if (score >= 60) {
+                message = 'Cukup baik, tapi masih perlu belajar lagi.';
             } else {
-                resultIcon.className = 'w-32 h-32 mx-auto mb-6 rounded-full flex items-center justify-center bg-gradient-to-br from-orange-400 to-orange-600 celebration';
-                resultIcon.innerHTML = '<i class="fas fa-heart text-6xl text-white"></i>';
-                resultTitle.textContent = 'Terus Belajar!';
-                resultMessage.textContent = 'Jangan menyerah! Setiap kesalahan adalah kesempatan untuk belajar. Cobalah lagi!';
+                message = 'Jangan menyerah! Terus belajar dan coba lagi.';
             }
+            document.getElementById('score-message').textContent = message;
         }
 
+        // Format Time Function
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            return `${minutes}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Restart Quiz Function
         function restartQuiz() {
-            if (currentQuiz) {
-                startQuiz(Object.keys(quizData).find(key => quizData[key] === currentQuiz));
-            }
+            document.getElementById('results-section').classList.add('hidden');
+            startQuiz(Object.keys(quizData).find(key => quizData[key] === currentQuiz));
         }
 
+        // Back to Selection Function
         function backToSelection() {
-            document.getElementById('results').classList.add('hidden');
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('quiz-section').classList.add('hidden');
             document.getElementById('quiz-selection').classList.remove('hidden');
         }
 
-        // Add some interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            // Add hover effect to quiz cards
-            document.querySelectorAll('.card-hover').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-8px)';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transform = 'translateY(0)';
-                });
+        // Try Another Quiz Function
+        function tryAnotherQuiz() {
+            document.getElementById('results-section').classList.add('hidden');
+            document.getElementById('quiz-selection').classList.remove('hidden');
+        }
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('shadow-xl');
+            } else {
+                nav.classList.remove('shadow-xl');
+            }
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.card-hover').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
         });
     </script>
 </body>
